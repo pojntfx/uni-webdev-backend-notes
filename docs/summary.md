@@ -311,6 +311,420 @@ console.log("Listening on :3000");
 
 **Best Practice**: Pakete sollten immer im Projekt installiert werden, damit dort alle Abhängigkeiten definiert sind. CLI-Tools können auch global, z.B. zur Projektinitialisierung, installiert werden.
 
+## RESTful Endpoints mit Express.js
+
+### Warum REST?
+
+**Jahr 2000**: Überlastung der Web-Backends (Server)
+
+- **Client**: Wenig JavaScript
+- **Backend**:
+  - HTML-Seiten (statisch)
+  - **Rendering von HTML und JSON**
+  - Zustand aller User-Dialoge
+  - Datenbank-Zugriffe
+  - **Komplette Dialogsteuerung** und Kontrolle auf dem Server
+
+**Heute**: Zustandslose Web-Backends (Server)
+
+- **Client**: Viel mehr JavaScript (Frameworks)
+- **Backend**:
+  - Datenbankzugriffe mit Rückgabe von **JSON-Objekten**
+  - **Keine Zustandsverwaltung** einzelner User mehr
+
+### Was ist REST?
+
+- REST steht für **"Representational State Transfer"**
+  - **Repräsentation**: Darstellung einer Ressource (Daten + Metadaten)
+  - **State**: Zustand der Anwendung, gegeben durch die Gesamtheit aller Repräsentationen der angezeigten Daten.
+  - **Transfer**: Zustandsübergang durch Aufruf einer Ressource.
+- **Roy Fielding** hat es in seiner Doktorarbeit im Jahr 2000 vorgestellt.
+- REST **ist ein Architekturparadigma** zur Vereinfachung von verteilten Systemen.
+- Es betont ...
+  - **Skalierbarkeit** der Komponenteninteraktionen
+  - Generierung von **Interfaces**
+  - **Unabhängige Bereitstellung** von Komponenten
+  - Verwendung von **Zwischenkomponenten** um die Interaktionslatenz zu reduzieren, die Sicherheit durchzusetzen und Legacy-Systeme zu encapsulieren.
+- REST hat **ursprünglich keine Beziehung zu HTTP** oder speziell gestalteten URLs.
+
+### Merkmale einer REST-Architektur
+
+- Client-Server-Modell.
+  Zustandslos: Jeder Request enthält alle Informationen zur Ausführung
+- Einheitliche Schnittstelle für die Erstellung, Abfrage, Aktualisierung und Löschung von Ressourcen:
+  - **POST**: Erstellen
+  - **GET**: Abfragen
+  - **PUT**: Aktualisieren
+  - **DELETE**: Löschen
+- **Ressourcen** sind das zentrale Konzept in REST:
+  - Datensätze aus einer Datenbank
+  - Textdateien
+  - Grafiken
+  - Videos
+  - Audio-Clips
+  - PDF-Dokumente
+  - HTML-, CSS- und JS-Dateien von einer Web-Anwendung
+  - Services einer SOA
+- Jede Ressource hat eine **eindeutige URI/URL**
+- Jede Ressource trägt **Caching-Informationen**
+
+### Idempotente Schnittstellen
+
+Sichere und idempotente Schnittstellen:
+
+- **GET**: Read auf eine Ressource
+- **PATCH/PUT**: Update auf die Ressource
+- **DELETE**: Delete einer Ressource
+- **HEAD**: Austausch von Request- und Response-Headern als Zusatzinformation für die übermittelten Daten/Ressourcen (content-size, last-modified, content-type etc.)
+- **OPTIONS**: Was kann mit einer Ressource gemacht werden? (Meta-information über mögliche HTTP-Verben.)
+
+Unsichere und nicht-idempotente Schnittstelle: **POST** (Create auf eine Ressource). Im Gegensatz zu DELETE können hier nach einem erneuten Anruf ohne Checks weitere Objekte erstellt werden.
+
+### Einheitliche Schnittstellen
+
+- Der **Pfad** einer URL kann statisch sein, z.B. /users, oder Plural.
+- **URL-Parameter** sind variabel und werden in der Regel verwendet, um eine eindeutige Identifizierung der Ressource zu ermöglichen.
+- **Query-Parameter** sind optionale Key-Value Paare, die in der Regel nur bei GET-Anfragen verwendet werden. Sie ermöglichen z.B. das sortieren von Ressourcen nach bestimmten Kriterien.
+- Der **HTTP-Body** wird in der Regel verwendet, um JSON-Daten bei Anfragen wie PUT, POST, PATCH oder DELETE zu übertragen.
+
+### Einheitliche Schnittstellen mit REST
+
+**Pfad**:
+
+```plaintext
+http://127.0.0.1:3000/fruits
 ```
 
+```js
+const DATA = [
+  { id: 1, name: "Apfel", color: "gelb,rot" },
+  { id: 2, name: "Birne", color: "gelb,grün" },
+  { id: 3, name: "Banane", color: "gelb" },
+];
+
+app.get("/fruits", (req, res) => {
+  res.send(DATA);
+});
 ```
+
+**URL-Parameter**:
+
+```plaintext
+http://127.0.0.1:3000/fruits/2
+```
+
+```js
+const DATA = [
+  { id: 1, name: "Apfel", color: "gelb,rot" },
+  { id: 2, name: "Birne", color: "gelb,grün" },
+  { id: 3, name: "Banane", color: "gelb" },
+];
+
+app.get("/fruits/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const item = DATA.find((o) => o.id === id);
+
+  res.send(item);
+});
+```
+
+**Query-Parameter**:
+
+```plaintext
+http://127.0.0.1:3000/fruits/2
+```
+
+```js
+const DATA = [
+  { id: 1, name: "Apfel", color: "gelb,rot" },
+  { id: 2, name: "Birne", color: "gelb,grün" },
+  { id: 3, name: "Banane", color: "gelb" },
+];
+
+app.get("/fruits", (req, res) => {
+  const id = parseInt(req.query.id);
+
+  const item = DATA.find((o) => o.id === id);
+
+  res.send(item);
+});
+```
+
+**HTTP-Body (URL-Encoded)**
+
+> Nutze `express.urlencoded`
+
+```js
+app.use(express.urlencoded({ extended: true }));
+
+const DATA = [{ id: 1, name: "Apfel", color: "gelb,rot" }];
+
+app.post("/fruits", (req, res) => {
+  const { name, color } = req.body;
+
+  if (DATA.find((o) => o.name === name)) {
+    res.send("Duplicate name");
+  } else {
+    const id = Math.max(...DATA.map((o) => o.id)) + 1;
+    const fruit = { id, name, color };
+    DATA.push(fruit);
+    res.send(fruit);
+  }
+});
+```
+
+**HTTP-Body (JSON)**
+
+> Nutze `express.json`
+
+```js
+app.use(express.json());
+
+const DATA = [{ id: 1, name: "Apfel", color: "gelb,rot" }];
+
+app.post("/fruits", (req, res) => {
+  const { name, color } = req.body;
+
+  if (DATA.find((o) => o.name === name)) {
+    res.send("Duplicate name");
+  } else {
+    const id = Math.max(...DATA.map((o) => o.id)) + 1;
+    const fruit = { id, name, color };
+    DATA.push(fruit);
+    res.send(fruit);
+  }
+});
+```
+
+### Routenpfade in Express
+
+```js
+app.get("/ab?cd", function (req, res) {
+  res.send("ab?cd");
+}); // acdabcd
+
+app.get("/ab+cd", function (req, res) {
+  res.send("ab+cd");
+}); // abcdabbbbcd
+
+app.get("/ab.*cd", function (req, res) {
+  res.send("ab.*cd");
+}); // abcdabxcd
+
+app.get("/ab(cd)?e", function (req, res) {
+  res.send("ab(cd)?e");
+});
+
+app.get(/a/, function (req, res) {
+  res.send("/a/");
+}); // alles mit 'a' drin
+
+app.get(/.*fly$/, function (req, res) {
+  res.send("/.*fly$/");
+});
+```
+
+### Middleware in Express
+
+**Wildcard-Route**:
+
+```js
+app.all(/.*/, (req, res, next) => {
+  console.log(`wildcard-route: ${req.method} ${req.url}`);
+  next();
+});
+```
+
+**Middleware** (empfohlen):
+
+```js
+app.use((req, res, next) => {
+  console.log(`middleware: ${req.method} ${req.url}`);
+  next();
+});
+```
+
+Die `next()`-Methode führt immer den nächsten passenden Routen-Handler aus.
+
+### Mehrere Callback-Handler
+
+```js
+let cb0 = function (req, res, next) {
+  console.log("CB0");
+  next();
+};
+
+let cb1 = function (req, res, next) {
+  console.log("CB1");
+  next();
+};
+
+let cb2 = function (req, res) {
+  res.send("Hello from CB2!");
+};
+
+app.get("/example/c", [cb0, cb1, cb2]);
+```
+
+Wichtig: `next` nicht vergessen!
+
+### Chaining Routes
+
+Mehrere HTTP-Verben für eine Route können mithilfe von Chaining Routes zusammengefasst werden.
+
+```js
+app
+  .route("/books")
+  .get(function (req, res) {
+    res.send("Get all books");
+  })
+  .post(function (req, res) {
+    res.send("Add a book");
+  });
+
+app
+  .route("/books/:id")
+  .put(function (req, res) {
+    res.send("Update the book");
+  })
+  .delete(function (req, res) {
+    res.send("Delete the book");
+  });
+```
+
+**Vorteile**: weniger fehleranfällig, leichter zu pflegen (da man die Route nur einmal schreibt)
+
+### Modularisierung
+
+Modularisierung von Routen in Express kann mithilfe von `express.Router` erreicht werden.
+
+Erstellung einer Router-Datei `birds.js`:
+
+```js
+const express = require("express");
+const router = express.Router();
+
+// Middleware
+router.use(function timeLog(req, res, next) {
+  console.log("Time: ", Date.now());
+  next();
+});
+
+// Routen
+router.get("/", function (req, res) {
+  res.send("Birds home page");
+});
+
+router.get("/about", function (req, res) {
+  res.send("About birds");
+});
+
+module.exports = router;
+```
+
+Einbindung des Routers in die Anwendung `app.js`:
+
+```js
+const express = require("express");
+const app = express();
+const birds = require("./birds");
+
+app.use("/birds", birds);
+
+app.listen(3000);
+
+console.log("Listening on :3000");
+```
+
+### Weitere Methoden von Express
+
+**Result**:
+
+- `res.status(code)`: Setzt den HTTP-Statuscode der Antwort (z.B. 200 für erfolgreiche Anfrage, 404 für nicht gefunden)
+- `res.redirect(url)`: Leitet den Request an eine andere URL um
+- `res.cookie(key, value, options)`: Setzt ein Cookie im Browser des Users, optionale Parameter können angegeben werden wie z.B. die Dauer des Cookies und ob es sicher übertragen werden soll
+- `res.attachment(path_to_file)`: Sendet eine Datei als Attachment (z.B. Download)
+- `res.download(path_to_file)`: Sendet eine Datei zum Download und zeigt eine entsprechende Benachrichtigung im Browser des Users
+
+**Request**:
+
+- `req.headers()`: Gibt ein Objekt mit allen HTTP-Request-Headern zurück
+- `req.cookies()`: Gibt ein Objekt mit allen Cookies zurück, die im Request enthalten sind (benötigt die Middleware `cookie-parser`)
+
+### Fehlerhandling
+
+**404 als JSON zurückgeben**:
+
+```js
+app.use("/users", require("./routes/users"));
+app.use("/products", require("./routes/products"));
+
+// Middleware nach allen Routes
+app.use((req, res) => {
+  res.status(404);
+  res.json({ message: "Not found" });
+});
+```
+
+**Exceptions**:
+
+- Wenn in einem Route-Handler eine Exception geworfen wird, sendet Express **standardmäßig eine HTML-Seite mit der Fehlermeldung und dem Stack-Trace** zurück.
+- Das kann ein Sicherheitsproblem darstellen, da sensible Informationen preisgegeben werden können. Eine Lösung wäre, stattdessen eine vernünftige JSON-response zu senden:
+
+```js
+try {
+  throw new Error("Something went wrong");
+} catch (err) {
+  res.status(500).json({ message: "InternalServerError" });
+}
+```
+
+- Ein größeres Problem entsteht, wenn **eine Exception in einem Promise auftritt**, da es zu einem globalen Fehler UnhandledPromiseRejection im Node-Prozess kommt und keine Response gesendet wird.
+- In zukünftigen Node-Versionen wird dieser Fehler nicht mehr global abgefangen und stattdessen der Prozess mit einem Fehlercode beendet, was zu einem **Absturz der gesamten Server-Anwendung** führen kann.
+- **Lösung**: Route-Handler in try/catch packen, Exceptions der next-Funktion übergeben und eine eigene Error-Middleware einbauen.
+
+```js
+app.get("/", async (req, res, next) => {
+  try {
+    throw new Error("Something went wrong");
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.use((err, req, res, next) => {
+  res.status(500);
+  res.json({ message: "InternalServerError" });
+  console.error(err);
+});
+```
+
+### HTTP-Verben und HTML-Forms
+
+- In Express kann man HTTP-Verben wie PATCH, PUT oder DELETE auf Endpoints mappen, die jedoch nur GET und POST verstehen
+- Eine Lösung dafür ist die Verwendung einer speziellen Middleware wie method-override:
+
+```js
+const express = require("express");
+const methodOverride = require("method-override");
+const app = express();
+
+app.use(methodOverride("_method"));
+```
+
+Jetzt kann man eine PATCH-Route definieren, die dann auch über ein Formular angesprochen werden kann:
+
+```js
+app.patch("/fruits", (req, res) => {
+  // some code ...
+});
+```
+
+In dem Formular muss dann der URL-Parameter `_method=patch` hinzugefügt werden:
+
+```html
+<form action="/fruits?_method=patch" method="post">...</form>
+```
+
+Jetzt wird die PATCH-Route aufgerufen, wenn das Formular abgeschickt wird.
