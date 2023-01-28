@@ -728,3 +728,173 @@ In dem Formular muss dann der URL-Parameter `_method=patch` hinzugefügt werden:
 ```
 
 Jetzt wird die PATCH-Route aufgerufen, wenn das Formular abgeschickt wird.
+
+## Die Template-Engine EJS und Express-Sessions
+
+### Einführung in EJS
+
+- EJS ist eine Template-Engine für JavaScript
+- Ermöglicht die Generierung von HTML-Seiten oder Snippets im Web-Backend
+- Express-Server verwendet vorhandene HTML-Templates, füllt diese mit Daten aus der Datenbank, und generiert damit fertiges HTML (ganze Seiten oder Snippets)
+
+### Verwendung von EJS
+
+Der Code auf dem **Server**, der die EJS-Template-Engine verwendet, sieht wie folgt aus:
+
+```js
+const express = require("express");
+const app = express();
+
+app.set("view engine", "ejs");
+
+app.get("/user", (req, res) => {
+  const user = {
+    name: "John Doe",
+    email: "johndoe@example.com",
+    phone: "555-555-5555",
+  };
+  res.render("user-template", { user });
+});
+```
+
+Das **Template** `template.ejs` im Unterverzeichnis `views`, welcher ein JavaScript-Objekt `{vorname, adresse, telefon}` übergeben wird:
+
+```html
+<html>
+  <body>
+    <h1>User Information</h1>
+    <table>
+      <tr>
+        <td>Name:</td>
+        <td><%= user.name %></td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td><%= user.email %></td>
+      </tr>
+      <tr>
+        <td>Phone:</td>
+        <td><%= user.phone %></td>
+      </tr>
+    </table>
+  </body>
+</html>
+```
+
+### Schleifen in EJS
+
+**Server**:
+
+```js
+const express = require("express");
+const app = express();
+
+app.set("view engine", "ejs");
+
+const DATA = [
+  { id: 1, name: "Apfel", color: "gelb,rot" },
+  { id: 2, name: "Birne", color: "gelb,grün" },
+  { id: 3, name: "Banane", color: "gelb" },
+];
+
+app.get("/fruits", (req, res) => {
+  res.render("all", { fruits: DATA }); // all.ejs Template
+});
+
+app.get("/fruits/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const fruit = DATA.find((o) => o.id === id);
+  res.render("fruit", fruit); // fruit.ejs Template
+});
+app.listen(3000);
+
+console.log("EJS server running on localhost:3000");
+```
+
+**Template**:
+
+```html
+<html>
+  <body>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Farbe</th>
+      </tr>
+      <% fruits.forEach( o => { %>
+      <tr>
+        <td><%= o.name %></td>
+        <td><%= o.color %></td>
+      </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>
+```
+
+### State mit Cookies durch `cookie-parser`
+
+- npm-Package `cookie-parser` ermöglicht zustandsbehaftete Server
+- Cookies sind name-value-Paare, gesendet von Server, gespeichert im Browser
+- Ermöglichen Identifizierung des Aufrufers bei zukünftigen Requests
+- Beispiel: Verwaltung von Warenkorb eines Users auf e-Commerce-Website
+
+So können **Cookies gesetzt** werden:
+
+```js
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
+
+response.cookie("userID", "xyz12345"); // Einzelner Cookie
+
+response
+  .cookie("userID", "xyz12345")
+  .cookie("verein", "VfB Stuttgart", { maxAge: 90000 }); // Mehrere Cookies, der zweite mit 90000 milli secs Lebensdauer
+```
+
+So können **Cookies ausgelesen werden**:
+
+```js
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
+
+const cookies = request.cookies;
+
+let userID = cookies.userID;
+let verein = cookies.verein;
+```
+
+### State mit Cookies durch `express-session`
+
+Mit dem npm-Package `express-session` kann man zustandsbehaftete Server bauen:
+
+```js
+const express = require("express");
+const session = require("express-session");
+
+const app = express();
+
+app.use(
+  session({
+    secret: "mykey", // Für Encoding und Decoding des Cookies
+    resave: false, // Nur speichern nach Änderung
+    saveUninitialized: true, // Anfangs immer speichern
+    cookie: { maxAge: 5000 }, // Ablaufzeit in Millisekunden
+  })
+);
+
+app.get("/", function (req, res) {
+  if (req.session.count) {
+    // Eine Session kann beliebige Attribute bekommen
+    req.session.count++;
+    res.setHeader("Content-Type", "text/html");
+    res.write("<p>count: " + req.session.count + "</p>");
+    res.end();
+  } else {
+    req.session.count = 1;
+    res.end("Willkommen zu der Sitzung. Refresh!");
+  }
+});
+```
