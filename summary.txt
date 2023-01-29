@@ -37,6 +37,19 @@ Felicitas Pojtinger
     -   5.3 Schleifen in EJS
     -   5.4 State mit Cookies durch cookie-parser
     -   5.5 State mit Cookies durch express-session
+-   6 Datenbanken mit MongoDB und Mongoose
+    -   6.1 Datenbanken in Webanwendungen
+    -   6.2 Grundlagen zu MongoDB
+    -   6.3 Verwendung von MongoDB in Express
+    -   6.4 Queries in MongoDB
+    -   6.5 Projektionen in MongoDB
+    -   6.6 Indizes in MongoDB
+    -   6.7 Bewertung von MongoDB
+    -   6.8 Grundlagen zu Mongoose
+    -   6.9 Datenbankverbindung in Mongoose herstellen
+    -   6.10 Schematas in Mongoose
+    -   6.11 Queries in Mongoose
+    -   6.12 Validation in Mongoose
 
 Meta
 
@@ -67,7 +80,6 @@ Themen der Vorlesung
 2.  RESTful Endpoints mit Express.js
 3.  Die Template-Engine EJS und Express-Sessions
 4.  Datenbanken mit MongoDB und Mongoose
-5.  Bidirektionale Client-Server-Kommunikation mit WebSocket
 
 Einführung in Node.js
 
@@ -915,3 +927,617 @@ bauen:
         res.end("Willkommen zu der Sitzung. Refresh!");
       }
     });
+
+Datenbanken mit MongoDB und Mongoose
+
+Datenbanken in Webanwendungen
+
+-   Bisher: Daten volatil in globalem Array im Backend gespeichert
+-   Zukünftig: Daten persistent in Datenbank im Backend gespeichert
+-   Ziel: Effiziente Verwaltung von Daten, insbesondere bei großen
+    Mengen.
+
+Grundlagen zu MongoDB
+
+-   MongoDB: Backend-Datenbanksystem für JS objects (hierarchische
+    Dokumente)
+-   Einfaches Datenmodell: Datenbank enthält Collections, die Documents
+    (JS objects) enthalten
+-   Analog zu RDB: Tabellen enthalten Datensätze
+-   Vorteil von MongoDB: Keine Format-Konvertierung von Node.js
+    notwendig, da es sich um eine NoSQL-Datenbank handelt.
+-   Achtung: Kein fixes Datenbankschema in MongoDB, das heißt, in einer
+    Collection können beliebige Datensätze gespeichert werden
+    (dynamisches Schema).
+-   Das hat sowohl Vorteile (einfach und bequem) als auch Nachteile
+    (hohe Disziplin der Entwickler erforderlich)
+-   Empfehlung: Validierung der Daten beim Lesen und Speichern auf
+    Applikationsebene durchführen
+-   Beobachtung: Ähnlichkeit zum OO-Datenbankmodell, da
+    Objekt-Beziehungen direkt gespeichert werden, anstatt über mehrere
+    Tabellen mit Fremdschlüsseln.
+
+Verwendung von MongoDB in Express
+
+Zuerst mongodb installieren: npm i -s mongodb
+
+Dann mit DB verbinden:
+
+    let db = null;
+    const url = `mongodb://localhost:27017`;
+
+    MongoClient.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }).then((connection) => {
+      db = connection.db("food");
+      console.log("connected to database food ...");
+    });
+
+Queries in MongoDB
+
+Erstellen einer Collection:
+
+    app.post("/example-create-collection-fruits", async (req, res) => {
+      await db.createCollection("fruits");
+
+      res.send("Collection fruits created ...");
+    });
+
+Löschen einer Datenbank:
+
+    app.post("/example-drop-db-food", async (req, res) => {
+      await db.dropDatabase("food");
+      res.send("Database food dropped!");
+    });
+
+  db.dropCollection für das Löschen einer Collection
+
+Importieren von Dokumenten:
+
+    $ mongoimport --db tools-test --collection restaurants --file restaurants.json
+
+Exportieren von Dokumenten:
+
+    $ mongoexport --db tools-test --collection restaurants --out new-restaurants.json
+
+Einfügen eines Dokument:
+
+    app.post("/example-create/fruits", async (req, res) => {
+      const { name, color } = req.body;
+      const fruit = { name, color };
+
+      await db.collection("fruits").insertOne(fruit);
+
+      res.send(`${name} inserted ...`);
+    });
+
+Auslesen eines Dokuments:
+
+    app.get("/example-find-one/fruits/:name", async (req, res) => {
+      const { name } = req.params;
+
+      const fruit = await db.collection("fruits").findOne({ name });
+
+      if (fruit) {
+        res.send(fruit);
+      } else {
+        res.status(400).send("not found ...");
+      }
+    });
+
+Einfügen mehrerer Dokumente:
+
+    app.post("/example-insert-many/fruits", async (req, res) => {
+      const fruits = [
+        { name: "Apfel", color: "gelb,rot" },
+        { name: "Birne", color: "gelb,grün" },
+        { name: "Kiwi", color: "grün" },
+        { name: "Banane", color: "gelb" },
+        { name: "Pfirsich", color: "gelb,rot" },
+      ];
+
+      await db.collection("fruits").insertMany(fruits);
+
+      res.send("Fruits inserted");
+    });
+
+Auslesen aller Dokumente:
+
+    app.get("/example-list/fruits", async (req, res) => {
+      const fruits = await db.collection("fruits").find().toArray();
+
+      res.send(fruits);
+    });
+
+Löschen eines Dokuments:
+
+    app.delete("/example-delete/fruits/:name", async (req, res) => {
+      const { name } = req.params;
+
+      const result = await db.collection("fruits").deleteOne({ name });
+
+      if (result.deletedCount > 0) {
+        res.send(`${name} deleted ...`);
+      } else {
+        res.status(400).send("fruit not found, nothing to delete ...");
+      }
+    });
+
+Löschen mehrerer Dokumente:
+
+    db.collection("fruits").deleteMany({ name: { $regex: name } });
+
+Aktualisierung von Dokumenten:
+
+    app.patch("/example-update-cuisine/:name", async (req, res) => {
+      const { name } = req.params;
+      const { cuisine } = req.body;
+
+      const result = await db.collection("restaurants").updateOne(
+        { name },
+        {
+          $set: { cuisine },
+          $currentDate: { lastModified: true }, // Änderungsdatum
+        }
+      );
+
+      res.send(result);
+    });
+
+Hinzufügen von Arrayelementen in Dokumenten:
+
+    app.post("/example-push-grade-score/restaurants/:name", async (req, res) => {
+      const { name } = req.params;
+      const { grade, score } = req.body;
+      const newGrade = { date: new Date(), grade, score };
+
+      const result = await db.collection("restaurants").updateOne(
+        { name },
+        (update = {
+          $push: { grades: newGrade },
+          $currentDate: { lastModified: true },
+        })
+      );
+
+      res.send(result);
+    });
+
+Löschen von Arrayelementen in Dokumenten:
+
+    app.post("/example-pop-grade-score/restaurants/:name", async (req, res) => {
+      const { name } = req.params;
+      const query = { name };
+
+      const result = await db.collection("restaurants").updateOne(query, {
+        $pop: { grades: 1 },
+        $currentDate: { lastModified: true },
+      });
+
+      res.send(result);
+    });
+
+-   $pop {<array>: 1} entfernt das letzte Element,
+-   $pop {<array>: -1} entfernt das erste Element des Arrays.
+
+Tiefe Queries:
+
+    app.get("/example-zip/restaurants", async (req, res) => {
+      const { cuisine, zip } = req.query;
+
+      const restaurants = await db
+        .collection("restaurants")
+        .find({ "address.zipcode": zip, cuisine })
+        .toArray();
+
+      res.send(restaurants.map((o) => ({ name: o.name, zip: o.address.zipcode })));
+    });
+
+BSON für Vergleichsoperatoren:
+
+    app.get("/example-zip-range/restaurants", async (req, res) => {
+      const { zipMin, zipMax, cuisine } = req.query;
+
+      const restaurants = await db
+        .collection("restaurants")
+        .find({
+          cuisine,
+          "address.zipcode": { $gte: zipMin, $lt: zipMax }, // es gibt auch $eq, $in, $neq, $nin ...
+        })
+        .toArray();
+
+      res.send(restaurants.map((o) => ({ name: o.name, zip: o.address.zipcode })));
+    });
+
+BSON für Oder-Verknüpfung:
+
+    app.get("/example-zip-or-cuisine/restaurants", async (req, res) => {
+      const { zip, cuisine } = req.query;
+
+      const restaurants = await db
+        .collection("restaurants")
+        .find(
+          { $or: [{ "address.zipcode": zip }, { cuisine }] } // es gibt auch noch $and, $not und $nor
+        )
+        .toArray();
+
+      res.send(
+        restaurants.map((o) => ({
+          name: o.name,
+          cuisine: o.cuisine,
+          zip: o.address.zipcode,
+        }))
+      );
+    });
+
+Projektionen in MongoDB
+
+-   Bisher: Formatierung der Abfrage-Ergebnisse in der Anwendung durch
+    den Aufruf von result.mapauf JavaScript-Arrays
+-   Ineffizient, wenn der Endpoint nur einen kleinen Ausschnitt der
+    Objekte liefern soll
+-   Lösung: Verwendung von Projektionen, um Abfrage-Ergebnisse bereits
+    in der Datenbank zu formatieren, reduziert Traffic zwischen
+    Festplatte und Hauptspeicher.
+
+Ein/Auschluss von Attributen:
+
+    app.get("/example-fields/restaurants", async (req, res) => {
+      const { borough, cuisine } = req.query;
+
+      const restaurants = await db
+        .collection("restaurants")
+        .find(
+          { borough, cuisine },
+          { projection: { name: 1, address: 1, _id: 0 } } // 1 bedeuted Einschluss eines Attributs, 0 den Ausschluss
+        )
+        .toArray();
+
+      res.send(restaurants);
+    });
+
+Sortieren:
+
+    app.get("/example-sort/restaurants", async (req, res) => {
+      const { borough, cuisine } = req.query;
+
+      const restaurants = await db
+        .collection("restaurants")
+        .find({ borough, cuisine }, { projection: { name: 1, address: 1, _id: 0 } })
+        .sort({ name: 1 }) // Mit 1 wird aufsteigend sortiert, mit 0 absteigend.
+        .toArray();
+      res.send(restaurants);
+    });
+
+Aggregation:
+
+    app.get("/example-avg-score/restaurants", async (req, res) => {
+      const { borough, cuisine } = req.query;
+
+      const restaurants = await db
+        .collection("restaurants")
+        .aggregate([
+          {
+            // Wie `WHERE` in SQL
+            $match: { borough, cuisine },
+          },
+          {
+            // Wie `SELECT` in SQL
+            $project: {
+              name: "$name", // auch name: 1 möglich
+              avg_score: { $avg: "$grades.score" },
+            }, // auch $min, $max, $sum
+          },
+          { $sort: { name: 1 } },
+        ])
+        .toArray();
+
+      res.send(restaurants);
+    });
+
+Gruppierung:
+
+    app.get("/example-group/restaurants", async (req, res) => {
+      const { borough, cuisine } = req.query;
+
+      const restaurants = await db
+        .collection("restaurants")
+        .aggregate([
+          {
+            $match: { borough, cuisine },
+          },
+          {
+            // Wie `GROUP BY` in SQL
+            $group: {
+              _id: "$address.zipcode",
+              count: { $sum: 1 }, // auch $min, $max, $avg
+            },
+          },
+          { $sort: { _id: 1 } },
+        ])
+        .toArray();
+
+      res.send(restaurants);
+    });
+
+Indizes in MongoDB
+
+Datenbank-Indizes beschleunigen die Zugriffe für Queries und Updates,
+wenn nicht konkret mit der _id gesucht wird.
+
+Anlegen eines Index:
+
+    await db.collection("restaurants").createIndex({ cuisine: 1 }); // 1: Aufsteigend, -1: Absteigend
+
+  Form: {name: 'cuisine_1'}
+
+Anlegen eines kombinierten Index:
+
+    await db
+      .collection("restaurants")
+      .createIndex({ cuisine: 1, "address.zipcode": -1 });
+
+  Form: {name: 'cuisine_1_address.zipcode_-1'}
+
+Abfragen aller Indizes:
+
+    const indexes = await db.collection("restaurants").getIndexes();
+
+Löschen eines Index:
+
+    const result = await db.collection("restaurants").dropIndex("cuisine_1"); // 0: not ok, 1: success
+
+Löschen aller Indizes:
+
+    const result = await db.collection("restaurants").dropIndexes();
+
+Bewertung von MongoDB
+
+Vorteile:
+
+-   Einfache Schnittstelle
+-   Mächtige Query-Möglichkeiten
+-   Gut skalierbar (Mongo-Instanzen, Replica Sets)
+-   Nahtlose Integration mit JavaScript (JS objects/BSON-Dokumente)
+
+Nachteile:
+
+-   Umständliche Schnittstelle
+-   Fehlendes Datenbank-Schema → Chaos möglich
+-   Keine semantische Datenmodellierung
+-   Validierung muss von Anwendung gemacht werden
+
+Grundlagen zu Mongoose
+
+-   Mongoose: Eine komfortable Bibliothek über npm-Package mongodb in
+    Node.js
+-   API sehr ähnlich zum MongoDB-API mit geringem Lernaufwand und
+    ES6-Klassen
+-   Ermöglicht Datenbank-Schemata, semantische Datenmodellierung mit
+    Validierung der Daten
+-   Vereinfachte und einheitliche Query-Schnittstelle
+-   Sehr mächtig
+
+Datenbankverbindung in Mongoose herstellen
+
+Ist sehr ähnlich zu MongoDB:
+
+    const url = "mongodb://localhost:27017/food_mongoose";
+
+    mongoose
+      .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+      .then(() => {
+        console.log("connected to database food_mongoose ...");
+      });
+
+Schematas in Mongoose
+
+Definition von Schemata:
+
+    const mongoose = require("mongoose");
+
+    const fruitSchema = new mongoose.Schema({
+      name: { type: String, required: true },
+      color: { type: String, required: true },
+      img: { data: Buffer, contentType: String },
+    });
+
+    const Fruit = mongoose.model("Fruit", fruitSchema); // `Fruit` maps to a collection `fruits`
+
+Schema Types aus ES6:
+
+    const schemaExample = new mongoose.Schema({
+      bool: Boolean,
+      updated: Date,
+      age: Number,
+      array: [],
+      arrayofString: [String],
+      arrayofArrays: [[]],
+      arrayofArrayOfNumbers: [[Number]],
+      map: Map,
+      mapOfString: { type: Map, of: String },
+    });
+
+Weitere Schema Types aus MongoDB:
+
+    const schemaExample = new mongoose.Schema({
+      mixed: mongoose.Mixed, // Kann alles sein (`any`)
+      _someId: mongoose.ObjectId, // Explizite MongoDB-Id
+      decimal: mongoose.Decimal128, // 128-bit Floating-Point; `mongoose.Types.Decimal128.fromString('3.1415')`
+    });
+
+Indizes in Schemas:
+
+    const schemaExample = new mongoose.Schema({
+      name: {
+        type: String,
+        required: true, // Feld zwingend notwendig
+        index: true, // Index wird automatisch angelegt
+      },
+    });
+
+Options-Objekt:
+
+    const schemaExample = new mongoose.Schema(
+      {
+        name: String,
+        age: Number,
+      },
+      {
+        // Das Options-Objekt
+        timestamps: true, // Automatisch `createdAt` und `modifiedAt` verwalten
+      }
+    );
+
+Verschachtelte Schemata mit Kopien:
+
+    const ratingSchema = new mongoose.Schema({
+      grade: {
+        type: Number,
+        min: 1,
+        max: 6,
+      },
+      comment: String,
+      date: Date,
+    });
+
+    const productSchema = new mongoose.Schema({
+      name: { type: String, required: true },
+      price: { type: String, required: true },
+      ratings: [ratingSchema],
+    });
+
+    const Rating = mongoose.model("Rating", ratingSchema);
+    const Product = mongoose.model("Product", productSchema);
+
+Verschachtelte Schemata mit Referenzen:
+
+    const productSchema = new mongoose.Schema({
+      name: String,
+      category: {
+        // 1:1-Beziehung
+        type: mongoose.ObjectId,
+        ref: "Category",
+      },
+    });
+
+    const Product = mongoose.model("Product", productSchema);
+
+    const categorySchema = new mongoose.Schema({
+      name: String,
+      products: [
+        // 1:n-Beziehung
+        {
+          type: mongoose.ObjectId,
+          ref: "Product",
+        },
+      ],
+    });
+
+    const Category = mongoose.model("Category", categorySchema);
+
+  Auslesen von Referenzen mit populate (wie SQL JOIN):
+  await Product.find().populate("category")
+
+Queries in Mongoose
+
+Auslesen aller Dokumente:
+
+-   Queries liefern nicht nur einfache JS-Objekte, sondern intelligente
+    mongoose-Dokumente
+-   Diese Dokumente haben zusätzliche Methoden und Attribute im
+    Vergleich zu JS-Objekten
+-   Fruit.find().lean() liefert nur einfache JS-Objekte für bessere
+    Performance
+
+    app.get("/example-list/fruits", async (req, res) => {
+      const fruits = await Fruit.find();
+
+      res.send(fruits);
+    });
+
+Hinzufügen eines Dokuments:
+
+    app.post("/example-create/fruits", async (req, res) => {
+      const { name, color } = req.body;
+      const doc = await Fruit.findOne({ name });
+      if (doc) {
+        res.status(400).send("fruit found, delete first ...");
+
+        return;
+      }
+
+      const fruit = new Fruit({ name, color });
+
+      const imgPath = path.join(IMAGE_PATH, `${name}.png`);
+      try {
+        fruit.img.data = await fs.readFile(imgPath);
+        fruit.img.contentType = "image/png";
+      } catch (err) {
+        console.log(`No image for ${name} found.`);
+      }
+
+      await fruit.save();
+
+      res.send(`${name} inserted ...`);
+    });
+
+Umwandlung von MongoDB-Queries in Mongoose-Queries:
+
+    app.get("/example-group-by-color/fruits/:color", async (req, res) => {
+      const { color } = req.params;
+      const result = await Fruit.aggregate([
+        {
+          $match: { color: { $regex: color } },
+        },
+        {
+          $group: {
+            _id: "$color",
+            count: { $sum: 1 },
+          },
+        },
+        { $sort: { _id: 1 } },
+      ]);
+      res.send(result);
+    });
+
+  Ersetze db.collection("fruits") durch Fruit
+
+Validation in Mongoose
+
+Eingebaute Validatoren:
+
+    const breakfastSchema = new Schema({
+      eggs: {
+        type: Number,
+        min: [6, "Too few eggs"],
+        max: 12,
+      },
+      bacon: {
+        type: Number,
+        required: [true, "Why no bacon?"],
+      },
+      drink: {
+        type: String,
+        enum: ["Coffee", "Tea"],
+        required: function () {
+          return this.bacon > 3;
+        },
+      },
+    });
+
+Eigene Validatoren:
+
+    function myValidator(val) {
+      return val === "something";
+    }
+
+    new mongoose.Schema({ name: { type: String, validate: myValidator } });
+
+    // Hinzufügen einer Error-Message, {PATH} ist der fehlerhafte Pfad im Schema:
+    const customValidator = [
+      myValidator,
+      'Ups, {PATH} does not equal "something".',
+    ];
+
+    new mongoose.Schema({ name: { type: String, validate: customValidator } });

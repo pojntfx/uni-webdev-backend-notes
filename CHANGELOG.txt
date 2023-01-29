@@ -1,3 +1,9 @@
+commit 4b980d8fb2d8f7cb224c58dd4140d8c32fcf56c9
+Author: Felicitas Pojtinger <felicitas@pojtinger.com>
+Date:   Sun Jan 29 05:19:48 2023 +0100
+
+    feat: Add section on databases with MongoDB and Mongoose
+
 commit ac37145cfa2d28ef9b6e7cc789a199aea121d79b
 Author: Felicitas Pojtinger <felicitas@pojtinger.com>
 Date:   Sat Jan 28 21:14:19 2023 +0100
