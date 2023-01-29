@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Felicitas Pojtinger" />
+  <meta name="dcterms.date" content="2023-01-28" />
+  <meta name="keywords" content="webdev-backend, hdm-stuttgart" />
+  <title>Uni Webdev Backend Summary</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Uni Webdev Backend Summary</h1>
+<p class="subtitle">Summary for the webdev backend course at HdM
+Stuttgart</p>
+<p class="author">Felicitas Pojtinger</p>
+<p class="date">2023-01-28</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#meta"><span class="toc-section-number">1.1</span> Meta</a>
+<ul>
+<li><a href="#contributing"><span class="toc-section-number">1.1.1</span> Contributing</a></li>
+<li><a href="#license"><span class="toc-section-number">1.1.2</span>
+License</a></li>
+</ul></li>
+<li><a href="#themen-der-vorlesung"><span class="toc-section-number">1.2</span> Themen der Vorlesung</a></li>
+<li><a href="#einführung-in-node.js"><span class="toc-section-number">1.3</span> Einführung in Node.js</a>
+<ul>
+<li><a href="#warum-node.js"><span class="toc-section-number">1.3.1</span> Warum Node.js</a></li>
+<li><a href="#module"><span class="toc-section-number">1.3.2</span>
+Module</a></li>
+<li><a href="#import-export-mit-requiremodule"><span class="toc-section-number">1.3.3</span> Import &amp; Export mit
+<code>require</code>/<code>module</code></a></li>
+<li><a href="#import-export-mit-es6"><span class="toc-section-number">1.3.4</span> Import &amp; Export mit
+ES6</a></li>
+<li><a href="#callbacks-vs.-promises-vs.-asyncawait"><span class="toc-section-number">1.3.5</span> Callbacks vs. Promises
+vs. Async/Await</a></li>
+<li><a href="#statischer-webserver"><span class="toc-section-number">1.3.6</span> Statischer Webserver</a></li>
+<li><a href="#npm-pakete-installieren"><span class="toc-section-number">1.3.7</span> NPM: Pakete
+Installieren</a></li>
+<li><a href="#npm-package.json"><span class="toc-section-number">1.3.8</span> NPM:
+<code>package.json</code></a></li>
+<li><a href="#npm-paketauflösung"><span class="toc-section-number">1.3.9</span> NPM: Paketauflösung</a></li>
+</ul></li>
+<li><a href="#restful-endpoints-mit-express.js"><span class="toc-section-number">1.4</span> RESTful Endpoints mit
+Express.js</a>
+<ul>
+<li><a href="#warum-rest"><span class="toc-section-number">1.4.1</span>
+Warum REST?</a></li>
+<li><a href="#was-ist-rest"><span class="toc-section-number">1.4.2</span> Was ist REST?</a></li>
+<li><a href="#merkmale-einer-rest-architektur"><span class="toc-section-number">1.4.3</span> Merkmale einer
+REST-Architektur</a></li>
+<li><a href="#idempotente-schnittstellen"><span class="toc-section-number">1.4.4</span> Idempotente
+Schnittstellen</a></li>
+<li><a href="#einheitliche-schnittstellen"><span class="toc-section-number">1.4.5</span> Einheitliche
+Schnittstellen</a></li>
+<li><a href="#einheitliche-schnittstellen-mit-rest"><span class="toc-section-number">1.4.6</span> Einheitliche Schnittstellen mit
+REST</a></li>
+<li><a href="#routenpfade-in-express"><span class="toc-section-number">1.4.7</span> Routenpfade in Express</a></li>
+<li><a href="#middleware-in-express"><span class="toc-section-number">1.4.8</span> Middleware in Express</a></li>
+<li><a href="#mehrere-callback-handler"><span class="toc-section-number">1.4.9</span> Mehrere
+Callback-Handler</a></li>
+<li><a href="#chaining-routes"><span class="toc-section-number">1.4.10</span> Chaining Routes</a></li>
+<li><a href="#modularisierung"><span class="toc-section-number">1.4.11</span> Modularisierung</a></li>
+<li><a href="#weitere-methoden-von-express"><span class="toc-section-number">1.4.12</span> Weitere Methoden von
+Express</a></li>
+<li><a href="#fehlerhandling"><span class="toc-section-number">1.4.13</span> Fehlerhandling</a></li>
+<li><a href="#http-verben-und-html-forms"><span class="toc-section-number">1.4.14</span> HTTP-Verben und
+HTML-Forms</a></li>
+</ul></li>
+<li><a href="#die-template-engine-ejs-und-express-sessions"><span class="toc-section-number">1.5</span> Die Template-Engine EJS und
+Express-Sessions</a>
+<ul>
+<li><a href="#einführung-in-ejs"><span class="toc-section-number">1.5.1</span> Einführung in EJS</a></li>
+<li><a href="#verwendung-von-ejs"><span class="toc-section-number">1.5.2</span> Verwendung von EJS</a></li>
+<li><a href="#schleifen-in-ejs"><span class="toc-section-number">1.5.3</span> Schleifen in EJS</a></li>
+<li><a href="#state-mit-cookies-durch-cookie-parser"><span class="toc-section-number">1.5.4</span> State mit Cookies durch
+<code>cookie-parser</code></a></li>
+<li><a href="#state-mit-cookies-durch-express-session"><span class="toc-section-number">1.5.5</span> State mit Cookies durch
+<code>express-session</code></a></li>
+</ul></li>
+</ul>
+</nav>
+<section id="meta" data-number="0.1">
+<h2 data-number="1.1"><span class="header-section-number">1.1</span>
+Meta</h2>
+<section id="contributing" data-number="0.1.1">
+<h3 data-number="1.1.1"><span class="header-section-number">1.1.1</span>
+Contributing</h3>
+<p>These study materials are heavily based on <a href="https://www.hdm-stuttgart.de/bibliothek/studieninteressierte/bachelor/block?sgname=Mobile+Medien+%28Bachelor%2C+7+Semester%29&amp;sgblockID=2573378&amp;sgang=550041&amp;blockname=Web+Development+Backend">professor
+Toenniessen’s “Web Development Backend” lecture at HdM Stuttgart</a> and
+prior work of fellow students.</p>
+<p><strong>Found an error or have a suggestion?</strong> Please open an
+issue on GitHub (<a href="https://github.com/pojntfx/uni-webdev-backend-notes">github.com/pojntfx/uni-webdev-backend-notes</a>):</p>
+<figure>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADFElEQVR4nO2cTW7bMBBG35QCsqQBH6BHoW/Qs/YG0lF8gADi0gCFrwtSshx00dSJ/zRcCDLFB5MIPTPfDBUTn27Dj88z4JBDDjnkkEMOvSZkrXWtd7BufSHPAw53mZ5DN4SQJJEkSWMQxIuPaQz1bjWuf/A1OfQVUF4MQDaD3GGHeDKGn6UOWFmQZ1mTQ18EBalnqtui7Y1v+iaHHhDqPnwWeWf1dvgpjPhuIn/BNzn0XFCU1C+9SQX12Uw9QXYAJJX7Tc+hm0HNRgzVLgQs/Q7FyHtZGvfF0rErwGT3mZ5DN4fqjlilslsoOVm7xJPpYsBNp+fQzaG/qM9CcyKxVF+hvkabbbCrz5eG5j/y+S62cKH2LQ+AlpTwHbENKMgOuUUV6gE7xLYP7ACQxiWYeJY1OfQ/rRmA2H7/rTcuRqEmLteD3UZsAUpHs5qurHlqJlMfT2aHxYlIatbiSdbk0FUZqlg6iLOJSCOC/CaG3XvXMlR5d/vpOXRzaNYa46wmesLadbQHQVV1uNfYDBQLNZRMKpAkNU9Sn56Mwd7ca2wAahmqwUDDwRB5X6qHqHUNwIhg6ZylevA1OXQN1ByBRji7iSoukgoQC/V8RE/w8xEbgJbIUhjZEMziYjAQTBhg6zz2g6/JoWugJVPZQoiVyVgiivoUwG3E60MrrUEaQX2ti4d5W6xqHa41tgCtihZVYZzLF1Vujl7X2CSUdJqP0cVCuyOoKtJhN5nXNTYCravh1WHMhfCV6oBW/fI44vWh1RkqpaPVozEGbzLiyZoIAYz4PguTB1+TQ9dA6LLVvv58iUsKc8RtxAag+rOfA4RQNPwaIWnqII5YOnZQ85gsh+sefE0OXQN9PFWneuT6fD5iKXMAbiM2BC3vdA27IPW5W/THmxjMrImQO03PoZtBH9/ggWxAHBF5VxPY1KAy+1t+G4XCXAivQWWZhef4GNNz6HuhVaWL9jLfZEAokPcy8l6kcYJhF2a38eBrcugaiLPmBFoNox3Rj0uZnKZDPYv9+tBFlfsfm/9nMocccsghhxxyCOAPN2pZX/HyMZsAAAAASUVORK5CYII=" width="150" alt="QR code to source repository" />
+<figcaption aria-hidden="true">QR code to source repository</figcaption>
+</figure>
+<p>If you like the study materials, a GitHub star is always appreciated
+:)</p>
+</section>
+<section id="license" data-number="0.1.2">
+<h3 data-number="1.1.2"><span class="header-section-number">1.1.2</span>
+License</h3>
+<figure>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJsAAAAzCAYAAACALnoPAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAADzQAAA80BCukWCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAA1dSURBVHja7V15uI9VHr9cO1doxLWEeOxCjAlDeYiHrjuomKmMbFfIDY+tHpRlkoloo2QZkiVbChXTpnDR1FhnapAZKUvK7doud5nv0ed95jtf73LO+3vf371mfn98Hu7Z3/N+3vM93+WcX1xubm5cDDGYIuW2lDKEjoTRhKWEvYTLhFxCJmE34QVCVatObOJiMCFYPOFuwnoQKhc4R9hOeJUwmzCXkEbIQl6KEdlSmqXcRciNITDkEA5ex2P/gkg0hFCdUMCBnA0JOwhXCM1MyPZEjCCBIo2wOh+P7zzhFCGTpZ0hzCLilDZYDSsS0gmbTMi2OUaQQDGasCifjekKYTthN+E40rIJSwh3RiB+d6oVTpdoBQk/xQgSKG4hPJ+PVtkFhPVY0az0jYSGAez1PiJ8oUu2xjFyBIo9mNc/5PE41Co2grBVpKuFpXeAioXSTPfokm1wFB78kkDO/zDZXsa8jsuj/pViMoAwD2KS5+1Qq26ARGsKjXWCLtmWhvzwo2z6/Jrlq43qs4TuhHqEOpqoS+hKmEE4IfrsjHxTqP57EeYQzrH2uolyR1ye92E845Aok+wbQgphGOEHkZdFmEIoFLC5RNngLhHK65LtSIgTMMGmv8pCK2oe8UM3I/vQf9pMV/vQANocgfYuEAqz9NI2KwbHr1Cud5RIpog1htDhqsni2vx/EtqEYJerBkPvQi07Gw0iMcRJeMqhz15OZejvPoQ3NTDUhWxbRF5LzTZTRL1H0N4nIr2DyzMrEpZAuaQo2MOUElKf8JpDmcOEKi7vvxihBqGW4oIB0YrAxqZWtfq6ZLsnpImYxfpQD9KC/c21tCSfJphUUW8yy5vikueGAQ7biz+K9Alu+yVWrkqIRFOrVTuI9x8dyiiJVdXmnScQfkt4g5DBymfqShl4EdRerZ+2uwp7paAnYi5rvzxhv/W1I+1zVvYXwgRzVrOPFuI53mN5XUTeFs02G4h6h5DeXaRvdGljoyj7XQjzu5BwAwzxTorWUUI1MRb1Lp6DgqY1rw5E6wuizeXpOmRLC3gilCGzANouQdiliCC+qiyU/YcYSwMDzbYIq1dAfN3lBIHTNdo8a42bvRgrL1GM84xLO38SZdcHOLeq32RCKcJaD+NtMzaGkoSJGrbUfxGKexCtB0TnNiVKtcmmGiZcDnAyllsbc/o3nrAB6Y+yPjuy8q+J8fTX7GeHqFeX5X3pk8DviXrJ1goh0mt7tDNDlB8f0NwqaVCdUJOwz6PsRPRdGBrxCc0+engQLZWQTdhPuGZ/50W2tgESbS1Xq2HjsfJqs/RJLH2IGM+rmn3NtlEqrLzFIm+AZptPinpPWR+QS192GCvKdwpgbhdjYbjLY1VV2AmS9VSSw6CP9S4kK0CYAdH5oQo/sivnRbagjI4bhVjjhDok+nyf5d0m8vbprmxKXDHslTYu1uZ8zTY7iXofylUZ6XM92uknypeLUNsciXZGsu2HW/neIJxJP8pXmuBAtKKElSDaGik6Tcj2dgBE+7NSn1mbo0T+iyyvEDOUnhcroZftShdNxDPu13ypZVideDZOqYj81aOtZJt5PuTjObKxrSgMR7lOnQwRxaGDv6v9qcuKtojFtV0kDDQmGzbV30f4YrcKLdPO7XUPy2/O0j82sF3pQhEk3geBD4ixNEH6RWHMLaWxunS2mevlhs9xGbZIpdysCNl8crOG9nkTIRk+UEW6B03JVjeASIIEsZexU8PLszLDWfr0EDbSH/gMCJ3v4Cv+VKS302grycUToatpd0W9V0Ik2m4TIy4TqYcJn5uSrV+EmhEXOz0dvviDok8eTChtVxuC9lh4GF85+ot6Sxw0y8c02rITo782WJnbo870EIm2ysvE4UK4VwgZpmRb4HOg+4QhtquL+WSui4Gzosg77fD1rfAA1866GhhfOeqLel/JLQDS39Joq7uDiemihp2vVRSiRaZye6IPsikl4SdTsv3Nx0C/JFQQ+yw3a/TvWNma3LotxlLLof4dHgpOARHdUF7kt1ARqBrgxtxbWXuVRHunNOboXoexvuNSR31oTVHu4ZBIpsbeLULHezEccFmpTTbq9EYf8WTKoVtZiIbzHnUqOdinVojxOEVHdBGkuFXUq+NkYvEZ5VEDVvSr1nSRV1Nznno6tD3MobzafrRjH0dWCERb66RxGpItGQpCLxOymUYjqBdQXawofbHhd8IgF4OttF29pDmOl0S9h1jeUhuD9WxNLLUxT6wU7T2oOca+DnPuRNYxyC+qtOKASXZWRuQiyqMbjO4boOi9S2itKUKVqyrBhGzTDAb8rRJzAawaB2W8F8v7i+ZYHhD1XmZ5Q30ac50wXLT3oma9sQZbl7Us7+mAiabsZ3UYwVRg6jIX/+hqD6J1xqo2y8jOpmxcBnK+XgBE42JbOtFLwHGsdYjExcDazIcx1w23+/wgnnWZh8li/1s6JPGp9ocVla8TNr4MP1o0I1pJwtdASW2ywSJ9QTPCoDGrVx0unDRNJNo4ta8ewvDpnz0h6nED6wXhjbghwjMOkXwQr7uQrQnznjQMSXyqj+J1TYLl2sXr2ZDN8ot2citn98AtNDpP50F0aqMPBUF38KdFn9OdvnwldjTbXOdiYN0a8On+7REELOx0IZtl97s/IHtnEJjDvS42ROuKaxaWeEmwOB/W7HOWvYfFdZleI/Cm6HObk7aGcGydNse4GFilN2JihC9AfhCjTTblDkS7CXO7wCUwIdoHlgd7rGitCRcIBwll/ZBtlcsALlhqOMqWcThA4XkaXGg/3DlcVYznpGabbVwMrN0NbFo6uE+0t8awfgWbeX8e81tJHPzJzgOiHfY6AY97PH4gHOM3FZmS7VuXfUonsSfa4fNhWrJ22rD042Istxg4pou7GFgTXQy9fiA/iG8M67cV9avjg5NnGUZFmWTKi/Ekj9JxOTV1nHDGOsxiTDY8tNPLTBar0QcRPFARh5i51WI8D2i2ucvFZnU04AAD+UH4ObQy0MbXepaHq4cUku+Gt3UOJxO5ahOOEM4TWppYHeI0Xm4WFxvQVjdG8FBbXRzsswI5r/jfK8JyF0OvH6zxOSZ+lG4mS28IUTneps6xKJDsiPQZuxDtdsJp5fsktDedgzgPS302tzAjaHBVhA83zUWknYLt50YfLzMepoNJYp+T6tMboX16X3N8j7M2trH0xdiXlrKpcyJkkTnJS2Qyov0GyoASn439zEGcR5Rpjrh/IzMgLYe36RQZexhWbl2cc2jrmGY5bTFqOC4L34ltSQl8bCetAyg2ZHs3BJJlY8GoqUmygoTJhBwcZKnqV+LIg6nZeWzT+X9CB2bEbeNAtqEB9nfy6kV+7HCRBtHKEt5h5wsSItnexK4xzTtMwf0bl50CFZUiFWHY9yWcak8yvTCGiNUEioA6mjcuiL10WNeYfgUnOEcQq+ZnhGew2c70OKCyCJELVwyPrEULW3EYKE0jJm+qwRYmA6f/B/FoacNLmh/HBc3KtNExqItmwrrGdDzMD92A/inBuE0ScQdFDXapix2eg4ljDg49L8uHZMvEyjNTU8FIgPI0D6folalik3LTgYz34YB0wQji0RqwQyubI9mfOZIthGtM24uQG3VKp5WKlMDmNA0X1vRi0RfKE3E/Ql3sIijq4abGbEzyVKRvwhagL2LO1iGK5Gac9i4Ewqu+PkGg4L2o+xCCB5Soak34JdO2eyAAdCSUjGEI0FwfMOl65ZMr58chFk2ZNQaF0U8Y15hm4yusgtWlKcReOYi2g3Dcq71EKoiiohyqIX8aXvo1kQfYwyTC75mFoM0qcD/1BDGOw+i8DiRKhGbbCkGQDVBnM/5/BB/BFkQEqwiU71kM2S58PGOxQhYPSCu30CePidaIsAur2fvKOxBWX3Eh3IC4B2q9WjE+wssayo7pTcJqUwxoj31YPEuTZPsUK98Z3NBTFitQP7bXfAKh5fvYedCZ7MqvZIjU2lj5mkMU7cWKVQZ9j7es6ey6goJsbCUCJtuEPCJZJcICKAAZhMFOv2cQNNmCvMZUKQN3iLSm7JieEoUDcatQH9iSHoNoS8fGVmpgqSDKUZC4LMRvEsTpITit38JZSutymp5oO8c6jmeFczOfbBuU2Yt21+HvPiz+qxa2GU8z8R0U5kWZZAmEqXA3KaItJFSJRt9299dGiuFQ67mlujI7KHIAq1l5lM2B9toFonagTSDiUdwOWRSiz7oOahtWqAosbHoEi49LRaDkZYypM0R2RRZEMAWrWmMoHp+B+ItYIGM/tNNZ8wSVCX6MEskKEx4hnILI3KAiN6JJ9LCvMQ3j2s7rqV1dzAiRZOoXVibCzZSL35RqmxeiO45pZjHk7Uf0aMAka0VYxn4p72NCt7xURsK6xjQGf3gjQjF5J2E64QAIdh7XITTKD7/qF+fjrq4Ywv+tAmWUbqRBsMqE/vBbpoNgOTDMjnS6lC8vyTbE4zBxDNHBmKt3l/xMFos0hwjz8RueFpbiyvdT7F40FZ69gvB7dX1Vfv290tiPtubPXyhOIjwDY2sWI1Uu/JVqk7+EMB6HTuKvh2f7N9VeRpHFJFpXAAAAAElFTkSuQmCC" width="128" alt="AGPL-3.0 license badge" />
+<figcaption aria-hidden="true">AGPL-3.0 license badge</figcaption>
+</figure>
+<p>Uni Webdev Backend Notes (c) 2023 Felicitas Pojtinger and
+contributors</p>
+<p>SPDX-License-Identifier: AGPL-3.0 </p>
+</section>
+</section>
+<section id="themen-der-vorlesung" data-number="0.2">
+<h2 data-number="1.2"><span class="header-section-number">1.2</span>
+Themen der Vorlesung</h2>
+<ol type="1">
+<li><strong>Einführung in Node.js</strong> und einfache
+HTML-Fileserver</li>
+<li><strong>RESTful Endpoints</strong> mit Express.js</li>
+<li>Die Template-Engine <strong>EJS</strong> und
+<strong>Express-Sessions</strong></li>
+<li>Datenbanken mit <strong>MongoDB und Mongoose</strong></li>
+<li>Bidirektionale Client-Server-Kommunikation mit
+<strong>WebSocket</strong></li>
+</ol>
+</section>
+<section id="einführung-in-node.js" data-number="0.3">
+<h2 data-number="1.3"><span class="header-section-number">1.3</span>
+Einführung in Node.js</h2>
+<section id="warum-node.js" data-number="0.3.1">
+<h3 data-number="1.3.1"><span class="header-section-number">1.3.1</span>
+Warum Node.js</h3>
+<ul>
+<li>Node.js kann <strong>auf dem Server</strong> verwendet werden, im
+Gegensatz zum Browser</li>
+<li>JavaScript ist die am <strong>häufigsten verwendete Sprache</strong>
+im Web und durch die Arbeit im Frontend bekannt</li>
+<li>JavaScript eignet sich durch seinen <strong>Event-Loop</strong>
+besonders gut für HTTP-Server</li>
+<li>Non-Blocking IO ermöglicht es, viele <strong>parallele
+Anfragen</strong> zu verarbeiten</li>
+<li>Node.js ist <strong>sehr schnell</strong></li>
+<li><strong>Einfach zu erlernen</strong>, da das populäre
+Backend-Framework Express.js auf Node.js aufbaut.</li>
+<li>Aktuelle Version von Node.js ist <strong>16.17.1 LTS (Long Term
+Support)</strong></li>
+<li>Bedeutende Anwender sind unter anderem <strong>Microsoft, Yahoo,
+SAP, PayPal</strong> und viele andere große Unternehmen verwenden
+Node.js irgendwo.</li>
+<li>Weitere Pakete können über den <strong>Node Package Manager
+(npm)</strong> hinzugefügt werden</li>
+</ul>
+<p><strong>Vorteile:</strong></p>
+<p>Sehr einfache APIs, <strong>schnell zu lernen</strong></p>
+<p><strong>Nachteile:</strong></p>
+<ul>
+<li>Etwas <strong>kompliziertes Programmiermodell</strong>
+(Event-basiert), typisch für JavaScript</li>
+<li><strong>Multithreading</strong> in Node.js nur über Worker-Threads
+möglich</li>
+</ul>
+</section>
+<section id="module" data-number="0.3.2">
+<h3 data-number="1.3.2"><span class="header-section-number">1.3.2</span>
+Module</h3>
+<p>Node.js hat ein Modul-Konzept, das es ermöglicht, Funktionen und
+Variablen <strong>in eigene Dateien auszulagern</strong> und sie in
+anderen Dateien zu importieren.</p>
+<p>Ein Beispiel dafür ist die Funktion <code>add(x,y)</code>, die in
+eine <strong>separate Datei</strong> namens 01d_Export.js ausgelagert
+wird:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> <span class="kw">function</span> <span class="fu">add</span>(x<span class="op">,</span> y) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">+</span> y<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p>In einer anderen Datei, z.B. 01d_AddiererFctModule.js, wird das Modul
+importiert und verwendet:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> add <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;./01d_Export&quot;</span>)<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  b <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> s <span class="op">=</span> <span class="fu">add</span>(a<span class="op">,</span> b)<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`</span><span class="sc">${</span>a<span class="sc">}</span><span class="vs"> + </span><span class="sc">${</span>b<span class="sc">}</span><span class="vs"> = </span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Mit Modulen kann der Code bei größeren Programmen übersichtlicher
+gestaltet werden und es ist <strong>weniger fehleranfällig bei
+Änderungen</strong> oder in der Wartung.</li>
+<li>Durch die Trennung des Codes in Module, <strong>erhöht sich die
+Übersichtlichkeit</strong> innerhalb des jeweiligen Moduls</li>
+<li>Einzelne Module können für sich finalisiert oder refaktoriert
+werden, <strong>ohne dass es Auswirkungen auf den Rest des
+Codes</strong> hat.</li>
+<li>Durch die Aufteilung des Codes in Module, wird es einfacher, die
+Arbeit unter Teammitgliedern aufzuteilen, was wiederum zu
+<strong>weniger Merge-Konflikten</strong> führt.</li>
+</ul>
+</section>
+<section id="import-export-mit-requiremodule" data-number="0.3.3">
+<h3 data-number="1.3.3"><span class="header-section-number">1.3.3</span>
+Import &amp; Export mit <code>require</code>/<code>module</code></h3>
+<p><strong>Export-Varianten</strong>:</p>
+<ol type="a">
+<li>Einzelne Methode oder Variable:</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> <span class="kw">function</span> <span class="fu">add</span>(x<span class="op">,</span> y) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">+</span> y<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<ol start="2" type="a">
+<li>Mehrere Methoden oder Variablen über ein Objekt:</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">add</span><span class="op">:</span> (a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">+</span> b<span class="op">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">subtract</span><span class="op">:</span> (a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">-</span> b<span class="op">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<ol start="3" type="a">
+<li>Mehrere einzelne Exports (mit der Convenience-Variable
+exports):</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>exports<span class="op">.</span><span class="at">add</span> <span class="op">=</span> (a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>exports<span class="op">.</span><span class="at">subtract</span> <span class="op">=</span> (a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">-</span> b<span class="op">;</span></span></code></pre></div>
+<p>Wenn Sie jedoch <strong>module.exports direkt zuweisen, werden alle
+vorherigen Exporte überschrieben.</strong></p>
+<p><strong>Import-Varianten</strong>:</p>
+<ol type="a">
+<li>Gesamtes Modul importieren:</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fs<span class="op">.</span><span class="fu">readFile</span>()<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> readFile <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">.</span><span class="at">readFile</span><span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">readFile</span>()<span class="op">;</span></span></code></pre></div>
+<ol start="2" type="a">
+<li>Destrukturierende Zuweisung:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { readFile } <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">readFile</span>()<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { readFile<span class="op">,</span> <span class="op">...</span>fs } <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">readFile</span>()<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>fs<span class="op">.</span><span class="fu">writeFile</span>()<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="import-export-mit-es6" data-number="0.3.4">
+<h3 data-number="1.3.4"><span class="header-section-number">1.3.4</span>
+Import &amp; Export mit ES6</h3>
+<p><strong>Export</strong>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">function</span> <span class="fu">add</span>(x<span class="op">,</span> y) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">+</span> y<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">function</span> <span class="fu">subtract</span>(x<span class="op">,</span> y) {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">-</span> y<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Default-Export</strong>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> (x<span class="op">,</span> y) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">-</span> y<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Import eines gesamten Moduls</strong>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="op">*</span> <span class="im">as</span> math <span class="im">from</span> <span class="st">&quot;./math.js&quot;</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(math<span class="op">.</span><span class="fu">add</span>(<span class="dv">5</span><span class="op">,</span> <span class="dv">2</span>))<span class="op">;</span> <span class="co">// Ausgabe: 7</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(math<span class="op">.</span><span class="fu">subtract</span>(<span class="dv">5</span><span class="op">,</span> <span class="dv">2</span>))<span class="op">;</span> <span class="co">// Ausgabe: 3</span></span></code></pre></div>
+<p><strong>Import mit destrukturierenden Zuweisung</strong>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { add <span class="im">as</span> addition<span class="op">,</span> subtract } <span class="im">from</span> <span class="st">&quot;./math.js&quot;</span><span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">addition</span>(<span class="dv">5</span><span class="op">,</span> <span class="dv">2</span>))<span class="op">;</span> <span class="co">// Ausgabe: 7</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">subtract</span>(<span class="dv">5</span><span class="op">,</span> <span class="dv">2</span>))<span class="op">;</span> <span class="co">// Ausgabe: 3</span></span></code></pre></div>
+</section>
+<section id="callbacks-vs.-promises-vs.-asyncawait" data-number="0.3.5">
+<h3 data-number="1.3.5"><span class="header-section-number">1.3.5</span>
+Callbacks vs. Promises vs. Async/Await</h3>
+<p><strong>Callbacks:</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>fs<span class="op">.</span><span class="fu">readFile</span>(<span class="st">&quot;file.txt&quot;</span><span class="op">,</span> <span class="kw">function</span> (err<span class="op">,</span> data) {</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (err) <span class="cf">throw</span> err<span class="op">;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(data)<span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p><strong>Promises</strong>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">.</span><span class="at">promises</span><span class="op">;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>fs<span class="op">.</span><span class="fu">readFile</span>(<span class="st">&quot;file.txt&quot;</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">then</span>((data) <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(data))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">catch</span>((err) <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err))<span class="op">;</span></span></code></pre></div>
+<p><strong>async/await</strong>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">.</span><span class="at">promises</span><span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">readFileExample</span>() {</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> fs<span class="op">.</span><span class="fu">readFile</span>(<span class="st">&quot;file.txt&quot;</span>)<span class="op">;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(data)<span class="op">;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (err) {</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err)<span class="op">;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">readFileExample</span>()<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="statischer-webserver" data-number="0.3.6">
+<h3 data-number="1.3.6"><span class="header-section-number">1.3.6</span>
+Statischer Webserver</h3>
+<p>Mit Support für ein paar wenige MIME-Types:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> http <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;http&quot;</span>)<span class="op">;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { extname } <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;path&quot;</span>)<span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> http<span class="op">.</span><span class="fu">createServer</span>((request<span class="op">,</span> response) <span class="kw">=&gt;</span> {</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  fs<span class="op">.</span><span class="fu">readFile</span>(<span class="bu">__dirname</span> <span class="op">+</span> request<span class="op">.</span><span class="at">url</span><span class="op">,</span> (err<span class="op">,</span> data) <span class="kw">=&gt;</span> {</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> status <span class="op">=</span> err <span class="op">?</span> <span class="dv">400</span> <span class="op">:</span> <span class="dv">200</span><span class="op">;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">extname</span>(request<span class="op">.</span><span class="at">url</span>) <span class="op">==</span> <span class="st">&quot;.html&quot;</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>      response<span class="op">.</span><span class="fu">writeHead</span>(<span class="dv">200</span><span class="op">,</span> { status<span class="op">,</span> <span class="st">&quot;Content-Type&quot;</span><span class="op">:</span> <span class="st">&quot;text/html&quot;</span> })<span class="op">;</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">extname</span>(request<span class="op">.</span><span class="at">url</span>) <span class="op">==</span> <span class="st">&quot;.js&quot;</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>      response<span class="op">.</span><span class="fu">writeHead</span>(<span class="dv">200</span><span class="op">,</span> { status<span class="op">,</span> <span class="st">&quot;Content-Type&quot;</span><span class="op">:</span> <span class="st">&quot;text/javascript&quot;</span> })<span class="op">;</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">extname</span>(request<span class="op">.</span><span class="at">url</span>) <span class="op">==</span> <span class="st">&quot;.css&quot;</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>      response<span class="op">.</span><span class="fu">writeHead</span>(<span class="dv">200</span><span class="op">,</span> { status<span class="op">,</span> <span class="st">&quot;Content-Type&quot;</span><span class="op">:</span> <span class="st">&quot;text/css&quot;</span> })<span class="op">;</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    response<span class="op">.</span><span class="fu">write</span>(data)<span class="op">;</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    response<span class="op">.</span><span class="fu">end</span>()<span class="op">;</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">listen</span>(<span class="dv">3000</span>)<span class="op">;</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Listening on :3000&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<p>Mit Support für ein alle MIME-Types:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> npm install node-static</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> http <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;http&quot;</span>)<span class="op">;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fileserver <span class="op">=</span> <span class="kw">new</span> (<span class="pp">require</span>(<span class="st">&quot;node-static&quot;</span>)<span class="op">.</span><span class="at">Server</span>)()<span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> http<span class="op">.</span><span class="fu">createServer</span>((request<span class="op">,</span> response) <span class="kw">=&gt;</span> {</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  fileserver<span class="op">.</span><span class="fu">serve</span>(request<span class="op">,</span> response)<span class="op">;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">listen</span>(<span class="dv">3000</span>)<span class="op">;</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Listening on :3000&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<p>Mit Support für ein alle MIME-Types &amp; Express:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> npm install express</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express&quot;</span>)<span class="op">;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">&quot;/WDBackend&quot;</span><span class="op">,</span> express<span class="op">.</span><span class="fu">static</span>(<span class="bu">__dirname</span> <span class="op">+</span> <span class="st">&quot;/public&quot;</span>))<span class="op">;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">listen</span>(<span class="dv">3000</span>)<span class="op">;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Listening on :3000&quot;</span>)<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="npm-pakete-installieren" data-number="0.3.7">
+<h3 data-number="1.3.7"><span class="header-section-number">1.3.7</span>
+NPM: Pakete Installieren</h3>
+<ul>
+<li>npm ist ein <strong>Paketmanager</strong> für Node.js (wie Maven bei
+Java oder pip bei Python)</li>
+<li>Mit npm können <strong>Thirdy-Party-Libraries installiert</strong>
+werden, die auf https://www.npmjs.com gesucht werden können.</li>
+<li>Installierte Pakete können <strong>über <code>require</code>
+importiert</strong> werden, ohne dass ein relativer Pfad angegeben
+werden muss.</li>
+<li><strong>Projektspezifische Installation</strong>:
+<code>npm install paket-name</code> oder
+<code>npm i paket-name</code></li>
+<li><strong>Globale Installation</strong>:
+<code>npm i -g paket-name</code></li>
+<li><strong>Installation von Entwicklungspaketen</strong>:
+<code>npm i -D paket-name</code></li>
+<li><code>package-lock.json</code> enthält die <strong>exakten
+Versionen</strong> aller installierten Abhängigkeiten.</li>
+<li>Der <code>node_modules</code> Ordner enthält die <strong>Dateien
+aller installierten Pakete.</strong></li>
+<li>Der <code>node_modules</code> Ordner sollte immer von
+<strong>Git-Commits ausgeschlossen werden</strong></li>
+<li>Die <code>package-lock.json</code> sollte hingegen <strong>immer
+committed</strong> werden.</li>
+</ul>
+</section>
+<section id="npm-package.json" data-number="0.3.8">
+<h3 data-number="1.3.8"><span class="header-section-number">1.3.8</span>
+NPM: <code>package.json</code></h3>
+<ul>
+<li>Kann mit <code>npm init</code> erstellt werden</li>
+<li>Unter <code>scripts</code> in der <code>package.json</code> Datei
+können Command-Line Befehle gespeichert werden, die später ausgeführt
+werden können, indem man sie in der Kommandozeile aufruft, z.B.
+<code>npm run start</code> oder <code>npm run test</code>.</li>
+</ul>
+</section>
+<section id="npm-paketauflösung" data-number="0.3.9">
+<h3 data-number="1.3.9"><span class="header-section-number">1.3.9</span>
+NPM: Paketauflösung</h3>
+<ol type="1">
+<li>In einem <strong>relativen Pfad</strong> zur Datei, bis eine
+“package.json” Datei gefunden wird (npm Projekt Definition) und dort im
+“node_modules” Ordner</li>
+<li>In den <strong>global</strong> installierten Paketen</li>
+</ol>
+<p><strong>Best Practice</strong>: Pakete sollten immer im Projekt
+installiert werden, damit dort alle Abhängigkeiten definiert sind.
+CLI-Tools können auch global, z.B. zur Projektinitialisierung,
+installiert werden.</p>
+</section>
+</section>
+<section id="restful-endpoints-mit-express.js" data-number="0.4">
+<h2 data-number="1.4"><span class="header-section-number">1.4</span>
+RESTful Endpoints mit Express.js</h2>
+<section id="warum-rest" data-number="0.4.1">
+<h3 data-number="1.4.1"><span class="header-section-number">1.4.1</span>
+Warum REST?</h3>
+<p><strong>Jahr 2000</strong>: Überlastung der Web-Backends (Server)</p>
+<ul>
+<li><strong>Client</strong>: Wenig JavaScript</li>
+<li><strong>Backend</strong>:
+<ul>
+<li>HTML-Seiten (statisch)</li>
+<li><strong>Rendering von HTML und JSON</strong></li>
+<li>Zustand aller User-Dialoge</li>
+<li>Datenbank-Zugriffe</li>
+<li><strong>Komplette Dialogsteuerung</strong> und Kontrolle auf dem
+Server</li>
+</ul></li>
+</ul>
+<p><strong>Heute</strong>: Zustandslose Web-Backends (Server)</p>
+<ul>
+<li><strong>Client</strong>: Viel mehr JavaScript (Frameworks)</li>
+<li><strong>Backend</strong>:
+<ul>
+<li>Datenbankzugriffe mit Rückgabe von
+<strong>JSON-Objekten</strong></li>
+<li><strong>Keine Zustandsverwaltung</strong> einzelner User mehr</li>
+</ul></li>
+</ul>
+</section>
+<section id="was-ist-rest" data-number="0.4.2">
+<h3 data-number="1.4.2"><span class="header-section-number">1.4.2</span>
+Was ist REST?</h3>
+<ul>
+<li>REST steht für <strong>“Representational State Transfer”</strong>
+<ul>
+<li><strong>Repräsentation</strong>: Darstellung einer Ressource (Daten
++ Metadaten)</li>
+<li><strong>State</strong>: Zustand der Anwendung, gegeben durch die
+Gesamtheit aller Repräsentationen der angezeigten Daten.</li>
+<li><strong>Transfer</strong>: Zustandsübergang durch Aufruf einer
+Ressource.</li>
+</ul></li>
+<li><strong>Roy Fielding</strong> hat es in seiner Doktorarbeit im Jahr
+2000 vorgestellt.</li>
+<li>REST <strong>ist ein Architekturparadigma</strong> zur Vereinfachung
+von verteilten Systemen.</li>
+<li>Es betont …
+<ul>
+<li><strong>Skalierbarkeit</strong> der Komponenteninteraktionen</li>
+<li>Generierung von <strong>Interfaces</strong></li>
+<li><strong>Unabhängige Bereitstellung</strong> von Komponenten</li>
+<li>Verwendung von <strong>Zwischenkomponenten</strong> um die
+Interaktionslatenz zu reduzieren, die Sicherheit durchzusetzen und
+Legacy-Systeme zu encapsulieren.</li>
+</ul></li>
+<li>REST hat <strong>ursprünglich keine Beziehung zu HTTP</strong> oder
+speziell gestalteten URLs.</li>
+</ul>
+</section>
+<section id="merkmale-einer-rest-architektur" data-number="0.4.3">
+<h3 data-number="1.4.3"><span class="header-section-number">1.4.3</span>
+Merkmale einer REST-Architektur</h3>
+<ul>
+<li>Client-Server-Modell. Zustandslos: Jeder Request enthält alle
+Informationen zur Ausführung</li>
+<li>Einheitliche Schnittstelle für die Erstellung, Abfrage,
+Aktualisierung und Löschung von Ressourcen:
+<ul>
+<li><strong>POST</strong>: Erstellen</li>
+<li><strong>GET</strong>: Abfragen</li>
+<li><strong>PUT</strong>: Aktualisieren</li>
+<li><strong>DELETE</strong>: Löschen</li>
+</ul></li>
+<li><strong>Ressourcen</strong> sind das zentrale Konzept in REST:
+<ul>
+<li>Datensätze aus einer Datenbank</li>
+<li>Textdateien</li>
+<li>Grafiken</li>
+<li>Videos</li>
+<li>Audio-Clips</li>
+<li>PDF-Dokumente</li>
+<li>HTML-, CSS- und JS-Dateien von einer Web-Anwendung</li>
+<li>Services einer SOA</li>
+</ul></li>
+<li>Jede Ressource hat eine <strong>eindeutige URI/URL</strong></li>
+<li>Jede Ressource trägt <strong>Caching-Informationen</strong></li>
+</ul>
+</section>
+<section id="idempotente-schnittstellen" data-number="0.4.4">
+<h3 data-number="1.4.4"><span class="header-section-number">1.4.4</span>
+Idempotente Schnittstellen</h3>
+<p>Sichere und idempotente Schnittstellen:</p>
+<ul>
+<li><strong>GET</strong>: Read auf eine Ressource</li>
+<li><strong>PATCH/PUT</strong>: Update auf die Ressource</li>
+<li><strong>DELETE</strong>: Delete einer Ressource</li>
+<li><strong>HEAD</strong>: Austausch von Request- und Response-Headern
+als Zusatzinformation für die übermittelten Daten/Ressourcen
+(content-size, last-modified, content-type etc.)</li>
+<li><strong>OPTIONS</strong>: Was kann mit einer Ressource gemacht
+werden? (Meta-information über mögliche HTTP-Verben.)</li>
+</ul>
+<p>Unsichere und nicht-idempotente Schnittstelle: <strong>POST</strong>
+(Create auf eine Ressource). Im Gegensatz zu DELETE können hier nach
+einem erneuten Anruf ohne Checks weitere Objekte erstellt werden.</p>
+</section>
+<section id="einheitliche-schnittstellen" data-number="0.4.5">
+<h3 data-number="1.4.5"><span class="header-section-number">1.4.5</span>
+Einheitliche Schnittstellen</h3>
+<ul>
+<li>Der <strong>Pfad</strong> einer URL kann statisch sein, z.B. /users,
+oder Plural.</li>
+<li><strong>URL-Parameter</strong> sind variabel und werden in der Regel
+verwendet, um eine eindeutige Identifizierung der Ressource zu
+ermöglichen.</li>
+<li><strong>Query-Parameter</strong> sind optionale Key-Value Paare, die
+in der Regel nur bei GET-Anfragen verwendet werden. Sie ermöglichen z.B.
+das sortieren von Ressourcen nach bestimmten Kriterien.</li>
+<li>Der <strong>HTTP-Body</strong> wird in der Regel verwendet, um
+JSON-Daten bei Anfragen wie PUT, POST, PATCH oder DELETE zu
+übertragen.</li>
+</ul>
+</section>
+<section id="einheitliche-schnittstellen-mit-rest" data-number="0.4.6">
+<h3 data-number="1.4.6"><span class="header-section-number">1.4.6</span>
+Einheitliche Schnittstellen mit REST</h3>
+<p><strong>Pfad</strong>:</p>
+<pre class="plaintext"><code>http://127.0.0.1:3000/fruits</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> DATA <span class="op">=</span> [</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Apfel&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb,rot&quot;</span> }<span class="op">,</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Birne&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb,grün&quot;</span> }<span class="op">,</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Banane&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb&quot;</span> }<span class="op">,</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/fruits&quot;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(DATA)<span class="op">;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p><strong>URL-Parameter</strong>:</p>
+<pre class="plaintext"><code>http://127.0.0.1:3000/fruits/2</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> DATA <span class="op">=</span> [</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Apfel&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb,rot&quot;</span> }<span class="op">,</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Birne&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb,grün&quot;</span> }<span class="op">,</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Banane&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb&quot;</span> }<span class="op">,</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/fruits/:id&quot;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> id <span class="op">=</span> <span class="pp">parseInt</span>(req<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="at">id</span>)<span class="op">;</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> item <span class="op">=</span> DATA<span class="op">.</span><span class="fu">find</span>((o) <span class="kw">=&gt;</span> o<span class="op">.</span><span class="at">id</span> <span class="op">===</span> id)<span class="op">;</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(item)<span class="op">;</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p><strong>Query-Parameter</strong>:</p>
+<pre class="plaintext"><code>http://127.0.0.1:3000/fruits/2</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> DATA <span class="op">=</span> [</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Apfel&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb,rot&quot;</span> }<span class="op">,</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Birne&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb,grün&quot;</span> }<span class="op">,</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Banane&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb&quot;</span> }<span class="op">,</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/fruits&quot;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> id <span class="op">=</span> <span class="pp">parseInt</span>(req<span class="op">.</span><span class="at">query</span><span class="op">.</span><span class="at">id</span>)<span class="op">;</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> item <span class="op">=</span> DATA<span class="op">.</span><span class="fu">find</span>((o) <span class="kw">=&gt;</span> o<span class="op">.</span><span class="at">id</span> <span class="op">===</span> id)<span class="op">;</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(item)<span class="op">;</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p><strong>HTTP-Body (URL-Encoded)</strong></p>
+<blockquote>
+<p>Nutze <code>express.urlencoded</code></p>
+</blockquote>
+<div class="sourceCode" id="cb26"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(express<span class="op">.</span><span class="fu">urlencoded</span>({ <span class="dt">extended</span><span class="op">:</span> <span class="kw">true</span> }))<span class="op">;</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> DATA <span class="op">=</span> [{ <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Apfel&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb,rot&quot;</span> }]<span class="op">;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">post</span>(<span class="st">&quot;/fruits&quot;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> { name<span class="op">,</span> color } <span class="op">=</span> req<span class="op">.</span><span class="at">body</span><span class="op">;</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (DATA<span class="op">.</span><span class="fu">find</span>((o) <span class="kw">=&gt;</span> o<span class="op">.</span><span class="at">name</span> <span class="op">===</span> name)) {</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;Duplicate name&quot;</span>)<span class="op">;</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> id <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>DATA<span class="op">.</span><span class="fu">map</span>((o) <span class="kw">=&gt;</span> o<span class="op">.</span><span class="at">id</span>)) <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> fruit <span class="op">=</span> { id<span class="op">,</span> name<span class="op">,</span> color }<span class="op">;</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    DATA<span class="op">.</span><span class="fu">push</span>(fruit)<span class="op">;</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">send</span>(fruit)<span class="op">;</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p><strong>HTTP-Body (JSON)</strong></p>
+<blockquote>
+<p>Nutze <code>express.json</code></p>
+</blockquote>
+<div class="sourceCode" id="cb27"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(express<span class="op">.</span><span class="fu">json</span>())<span class="op">;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> DATA <span class="op">=</span> [{ <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Apfel&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb,rot&quot;</span> }]<span class="op">;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">post</span>(<span class="st">&quot;/fruits&quot;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> { name<span class="op">,</span> color } <span class="op">=</span> req<span class="op">.</span><span class="at">body</span><span class="op">;</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (DATA<span class="op">.</span><span class="fu">find</span>((o) <span class="kw">=&gt;</span> o<span class="op">.</span><span class="at">name</span> <span class="op">===</span> name)) {</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;Duplicate name&quot;</span>)<span class="op">;</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> id <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>DATA<span class="op">.</span><span class="fu">map</span>((o) <span class="kw">=&gt;</span> o<span class="op">.</span><span class="at">id</span>)) <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> fruit <span class="op">=</span> { id<span class="op">,</span> name<span class="op">,</span> color }<span class="op">;</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    DATA<span class="op">.</span><span class="fu">push</span>(fruit)<span class="op">;</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">send</span>(fruit)<span class="op">;</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="routenpfade-in-express" data-number="0.4.7">
+<h3 data-number="1.4.7"><span class="header-section-number">1.4.7</span>
+Routenpfade in Express</h3>
+<div class="sourceCode" id="cb28"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/ab?cd&quot;</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;ab?cd&quot;</span>)<span class="op">;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span> <span class="co">// acdabcd</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/ab+cd&quot;</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;ab+cd&quot;</span>)<span class="op">;</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span> <span class="co">// abcdabbbbcd</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/ab.*cd&quot;</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;ab.*cd&quot;</span>)<span class="op">;</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span> <span class="co">// abcdabxcd</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/ab(cd)?e&quot;</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;ab(cd)?e&quot;</span>)<span class="op">;</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="ss">/a/</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;/a/&quot;</span>)<span class="op">;</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span> <span class="co">// alles mit &#39;a&#39; drin</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="ss">/.</span><span class="sc">*</span><span class="ss">fly</span><span class="sc">$</span><span class="ss">/</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;/.*fly$/&quot;</span>)<span class="op">;</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="middleware-in-express" data-number="0.4.8">
+<h3 data-number="1.4.8"><span class="header-section-number">1.4.8</span>
+Middleware in Express</h3>
+<p><strong>Wildcard-Route</strong>:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">all</span>(<span class="ss">/.</span><span class="sc">*</span><span class="ss">/</span><span class="op">,</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`wildcard-route: </span><span class="sc">${</span>req<span class="op">.</span><span class="at">method</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>req<span class="op">.</span><span class="at">url</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">next</span>()<span class="op">;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p><strong>Middleware</strong> (empfohlen):</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>((req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`middleware: </span><span class="sc">${</span>req<span class="op">.</span><span class="at">method</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>req<span class="op">.</span><span class="at">url</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">next</span>()<span class="op">;</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>Die <code>next()</code>-Methode führt immer den nächsten passenden
+Routen-Handler aus.</p>
+</section>
+<section id="mehrere-callback-handler" data-number="0.4.9">
+<h3 data-number="1.4.9"><span class="header-section-number">1.4.9</span>
+Mehrere Callback-Handler</h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> cb0 <span class="op">=</span> <span class="kw">function</span> (req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;CB0&quot;</span>)<span class="op">;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">next</span>()<span class="op">;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> cb1 <span class="op">=</span> <span class="kw">function</span> (req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;CB1&quot;</span>)<span class="op">;</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">next</span>()<span class="op">;</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> cb2 <span class="op">=</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;Hello from CB2!&quot;</span>)<span class="op">;</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/example/c&quot;</span><span class="op">,</span> [cb0<span class="op">,</span> cb1<span class="op">,</span> cb2])<span class="op">;</span></span></code></pre></div>
+<p>Wichtig: <code>next</code> nicht vergessen!</p>
+</section>
+<section id="chaining-routes" data-number="0.4.10">
+<h3 data-number="1.4.10"><span class="header-section-number">1.4.10</span> Chaining Routes</h3>
+<p>Mehrere HTTP-Verben für eine Route können mithilfe von Chaining
+Routes zusammengefasst werden.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>app</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">route</span>(<span class="st">&quot;/books&quot;</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">get</span>(<span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;Get all books&quot;</span>)<span class="op">;</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">post</span>(<span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;Add a book&quot;</span>)<span class="op">;</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>app</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">route</span>(<span class="st">&quot;/books/:id&quot;</span>)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">put</span>(<span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;Update the book&quot;</span>)<span class="op">;</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">delete</span>(<span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;Delete the book&quot;</span>)<span class="op">;</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span></code></pre></div>
+<p><strong>Vorteile</strong>: weniger fehleranfällig, leichter zu
+pflegen (da man die Route nur einmal schreibt)</p>
+</section>
+<section id="modularisierung" data-number="0.4.11">
+<h3 data-number="1.4.11"><span class="header-section-number">1.4.11</span> Modularisierung</h3>
+<p>Modularisierung von Routen in Express kann mithilfe von
+<code>express.Router</code> erreicht werden.</p>
+<p>Erstellung einer Router-Datei <code>birds.js</code>:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express&quot;</span>)<span class="op">;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> router <span class="op">=</span> express<span class="op">.</span><span class="fu">Router</span>()<span class="op">;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Middleware</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">use</span>(<span class="kw">function</span> <span class="fu">timeLog</span>(req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Time: &quot;</span><span class="op">,</span> <span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>())<span class="op">;</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">next</span>()<span class="op">;</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Routen</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/&quot;</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;Birds home page&quot;</span>)<span class="op">;</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/about&quot;</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;About birds&quot;</span>)<span class="op">;</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> router<span class="op">;</span></span></code></pre></div>
+<p>Einbindung des Routers in die Anwendung <code>app.js</code>:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express&quot;</span>)<span class="op">;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> birds <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;./birds&quot;</span>)<span class="op">;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">&quot;/birds&quot;</span><span class="op">,</span> birds)<span class="op">;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">listen</span>(<span class="dv">3000</span>)<span class="op">;</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Listening on :3000&quot;</span>)<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="weitere-methoden-von-express" data-number="0.4.12">
+<h3 data-number="1.4.12"><span class="header-section-number">1.4.12</span> Weitere Methoden von
+Express</h3>
+<p><strong>Result</strong>:</p>
+<ul>
+<li><code>res.status(code)</code>: Setzt den HTTP-Statuscode der Antwort
+(z.B. 200 für erfolgreiche Anfrage, 404 für nicht gefunden)</li>
+<li><code>res.redirect(url)</code>: Leitet den Request an eine andere
+URL um</li>
+<li><code>res.cookie(key, value, options)</code>: Setzt ein Cookie im
+Browser des Users, optionale Parameter können angegeben werden wie z.B.
+die Dauer des Cookies und ob es sicher übertragen werden soll</li>
+<li><code>res.attachment(path_to_file)</code>: Sendet eine Datei als
+Attachment (z.B. Download)</li>
+<li><code>res.download(path_to_file)</code>: Sendet eine Datei zum
+Download und zeigt eine entsprechende Benachrichtigung im Browser des
+Users</li>
+</ul>
+<p><strong>Request</strong>:</p>
+<ul>
+<li><code>req.headers()</code>: Gibt ein Objekt mit allen
+HTTP-Request-Headern zurück</li>
+<li><code>req.cookies()</code>: Gibt ein Objekt mit allen Cookies
+zurück, die im Request enthalten sind (benötigt die Middleware
+<code>cookie-parser</code>)</li>
+</ul>
+</section>
+<section id="fehlerhandling" data-number="0.4.13">
+<h3 data-number="1.4.13"><span class="header-section-number">1.4.13</span> Fehlerhandling</h3>
+<p><strong>404 als JSON zurückgeben</strong>:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">&quot;/users&quot;</span><span class="op">,</span> <span class="pp">require</span>(<span class="st">&quot;./routes/users&quot;</span>))<span class="op">;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">&quot;/products&quot;</span><span class="op">,</span> <span class="pp">require</span>(<span class="st">&quot;./routes/products&quot;</span>))<span class="op">;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Middleware nach allen Routes</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>((req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">status</span>(<span class="dv">404</span>)<span class="op">;</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">json</span>({ <span class="dt">message</span><span class="op">:</span> <span class="st">&quot;Not found&quot;</span> })<span class="op">;</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p><strong>Exceptions</strong>:</p>
+<ul>
+<li>Wenn in einem Route-Handler eine Exception geworfen wird, sendet
+Express <strong>standardmäßig eine HTML-Seite mit der Fehlermeldung und
+dem Stack-Trace</strong> zurück.</li>
+<li>Das kann ein Sicherheitsproblem darstellen, da sensible
+Informationen preisgegeben werden können. Eine Lösung wäre, stattdessen
+eine vernünftige JSON-response zu senden:</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&quot;Something went wrong&quot;</span>)<span class="op">;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">catch</span> (err) {</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">status</span>(<span class="dv">500</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">message</span><span class="op">:</span> <span class="st">&quot;InternalServerError&quot;</span> })<span class="op">;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Ein größeres Problem entsteht, wenn <strong>eine Exception in einem
+Promise auftritt</strong>, da es zu einem globalen Fehler
+UnhandledPromiseRejection im Node-Prozess kommt und keine Response
+gesendet wird.</li>
+<li>In zukünftigen Node-Versionen wird dieser Fehler nicht mehr global
+abgefangen und stattdessen der Prozess mit einem Fehlercode beendet, was
+zu einem <strong>Absturz der gesamten Server-Anwendung</strong> führen
+kann.</li>
+<li><strong>Lösung</strong>: Route-Handler in try/catch packen,
+Exceptions der next-Funktion übergeben und eine eigene Error-Middleware
+einbauen.</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/&quot;</span><span class="op">,</span> <span class="kw">async</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&quot;Something went wrong&quot;</span>)<span class="op">;</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (err) {</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">next</span>(err)<span class="op">;</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>((err<span class="op">,</span> req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">status</span>(<span class="dv">500</span>)<span class="op">;</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">json</span>({ <span class="dt">message</span><span class="op">:</span> <span class="st">&quot;InternalServerError&quot;</span> })<span class="op">;</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err)<span class="op">;</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="http-verben-und-html-forms" data-number="0.4.14">
+<h3 data-number="1.4.14"><span class="header-section-number">1.4.14</span> HTTP-Verben und
+HTML-Forms</h3>
+<ul>
+<li>In Express kann man HTTP-Verben wie PATCH, PUT oder DELETE auf
+Endpoints mappen, die jedoch nur GET und POST verstehen</li>
+<li>Eine Lösung dafür ist die Verwendung einer speziellen Middleware wie
+method-override:</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express&quot;</span>)<span class="op">;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> methodOverride <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;method-override&quot;</span>)<span class="op">;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="fu">methodOverride</span>(<span class="st">&quot;_method&quot;</span>))<span class="op">;</span></span></code></pre></div>
+<p>Jetzt kann man eine PATCH-Route definieren, die dann auch über ein
+Formular angesprochen werden kann:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">patch</span>(<span class="st">&quot;/fruits&quot;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// some code ...</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>In dem Formular muss dann der URL-Parameter
+<code>_method=patch</code> hinzugefügt werden:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;/fruits?_method=patch&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;post&quot;</span><span class="kw">&gt;</span>...<span class="kw">&lt;/form&gt;</span></span></code></pre></div>
+<p>Jetzt wird die PATCH-Route aufgerufen, wenn das Formular abgeschickt
+wird.</p>
+</section>
+</section>
+<section id="die-template-engine-ejs-und-express-sessions" data-number="0.5">
+<h2 data-number="1.5"><span class="header-section-number">1.5</span> Die
+Template-Engine EJS und Express-Sessions</h2>
+<section id="einführung-in-ejs" data-number="0.5.1">
+<h3 data-number="1.5.1"><span class="header-section-number">1.5.1</span>
+Einführung in EJS</h3>
+<ul>
+<li>EJS ist eine Template-Engine für JavaScript</li>
+<li>Ermöglicht die Generierung von HTML-Seiten oder Snippets im
+Web-Backend</li>
+<li>Express-Server verwendet vorhandene HTML-Templates, füllt diese mit
+Daten aus der Datenbank, und generiert damit fertiges HTML (ganze Seiten
+oder Snippets)</li>
+</ul>
+</section>
+<section id="verwendung-von-ejs" data-number="0.5.2">
+<h3 data-number="1.5.2"><span class="header-section-number">1.5.2</span>
+Verwendung von EJS</h3>
+<p>Der Code auf dem <strong>Server</strong>, der die EJS-Template-Engine
+verwendet, sieht wie folgt aus:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express&quot;</span>)<span class="op">;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">set</span>(<span class="st">&quot;view engine&quot;</span><span class="op">,</span> <span class="st">&quot;ejs&quot;</span>)<span class="op">;</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/user&quot;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> user <span class="op">=</span> {</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;John Doe&quot;</span><span class="op">,</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">email</span><span class="op">:</span> <span class="st">&quot;johndoe@example.com&quot;</span><span class="op">,</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">phone</span><span class="op">:</span> <span class="st">&quot;555-555-5555&quot;</span><span class="op">,</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">render</span>(<span class="st">&quot;user-template&quot;</span><span class="op">,</span> { user })<span class="op">;</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>Das <strong>Template</strong> <code>template.ejs</code> im
+Unterverzeichnis <code>views</code>, welcher ein JavaScript-Objekt
+<code>{vorname, adresse, telefon}</code> übergeben wird:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;body&gt;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1&gt;</span>User Information<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;table&gt;</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span>Name:<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span><span class="er">&lt;</span>%= user.name %&gt;<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span>Email:<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span><span class="er">&lt;</span>%= user.email %&gt;<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span>Phone:<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span><span class="er">&lt;</span>%= user.phone %&gt;<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/table&gt;</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+</section>
+<section id="schleifen-in-ejs" data-number="0.5.3">
+<h3 data-number="1.5.3"><span class="header-section-number">1.5.3</span>
+Schleifen in EJS</h3>
+<p><strong>Server</strong>:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express&quot;</span>)<span class="op">;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">set</span>(<span class="st">&quot;view engine&quot;</span><span class="op">,</span> <span class="st">&quot;ejs&quot;</span>)<span class="op">;</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> DATA <span class="op">=</span> [</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Apfel&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb,rot&quot;</span> }<span class="op">,</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Birne&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb,grün&quot;</span> }<span class="op">,</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Banane&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;gelb&quot;</span> }<span class="op">,</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/fruits&quot;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">render</span>(<span class="st">&quot;all&quot;</span><span class="op">,</span> { <span class="dt">fruits</span><span class="op">:</span> DATA })<span class="op">;</span> <span class="co">// all.ejs Template</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/fruits/:id&quot;</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> id <span class="op">=</span> <span class="pp">parseInt</span>(req<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="at">id</span>)<span class="op">;</span></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> fruit <span class="op">=</span> DATA<span class="op">.</span><span class="fu">find</span>((o) <span class="kw">=&gt;</span> o<span class="op">.</span><span class="at">id</span> <span class="op">===</span> id)<span class="op">;</span></span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">render</span>(<span class="st">&quot;fruit&quot;</span><span class="op">,</span> fruit)<span class="op">;</span> <span class="co">// fruit.ejs Template</span></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">listen</span>(<span class="dv">3000</span>)<span class="op">;</span></span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;EJS server running on localhost:3000&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<p><strong>Template</strong>:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;body&gt;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;table&gt;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;th&gt;</span>Name<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;th&gt;</span>Farbe<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>      <span class="er">&lt;</span>% fruits.forEach( o =&gt; { %&gt;</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span><span class="er">&lt;</span>%= o.name %&gt;<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span><span class="er">&lt;</span>%= o.color %&gt;<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>      <span class="er">&lt;</span>% }) %&gt;</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/table&gt;</span></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+</section>
+<section id="state-mit-cookies-durch-cookie-parser" data-number="0.5.4">
+<h3 data-number="1.5.4"><span class="header-section-number">1.5.4</span>
+State mit Cookies durch <code>cookie-parser</code></h3>
+<ul>
+<li>npm-Package <code>cookie-parser</code> ermöglicht zustandsbehaftete
+Server</li>
+<li>Cookies sind name-value-Paare, gesendet von Server, gespeichert im
+Browser</li>
+<li>Ermöglichen Identifizierung des Aufrufers bei zukünftigen
+Requests</li>
+<li>Beispiel: Verwaltung von Warenkorb eines Users auf
+e-Commerce-Website</li>
+</ul>
+<p>So können <strong>Cookies gesetzt</strong> werden:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> cookieParser <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;cookie-parser&quot;</span>)<span class="op">;</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="fu">cookieParser</span>())<span class="op">;</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>response<span class="op">.</span><span class="fu">cookie</span>(<span class="st">&quot;userID&quot;</span><span class="op">,</span> <span class="st">&quot;xyz12345&quot;</span>)<span class="op">;</span> <span class="co">// Einzelner Cookie</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>response</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">cookie</span>(<span class="st">&quot;userID&quot;</span><span class="op">,</span> <span class="st">&quot;xyz12345&quot;</span>)</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">cookie</span>(<span class="st">&quot;verein&quot;</span><span class="op">,</span> <span class="st">&quot;VfB Stuttgart&quot;</span><span class="op">,</span> { <span class="dt">maxAge</span><span class="op">:</span> <span class="dv">90000</span> })<span class="op">;</span> <span class="co">// Mehrere Cookies, der zweite mit 90000 milli secs Lebensdauer</span></span></code></pre></div>
+<p>So können <strong>Cookies ausgelesen werden</strong>:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> cookieParser <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;cookie-parser&quot;</span>)<span class="op">;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="fu">cookieParser</span>())<span class="op">;</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> cookies <span class="op">=</span> request<span class="op">.</span><span class="at">cookies</span><span class="op">;</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> userID <span class="op">=</span> cookies<span class="op">.</span><span class="at">userID</span><span class="op">;</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> verein <span class="op">=</span> cookies<span class="op">.</span><span class="at">verein</span><span class="op">;</span></span></code></pre></div>
+</section>
+<section id="state-mit-cookies-durch-express-session" data-number="0.5.5">
+<h3 data-number="1.5.5"><span class="header-section-number">1.5.5</span>
+State mit Cookies durch <code>express-session</code></h3>
+<p>Mit dem npm-Package <code>express-session</code> kann man
+zustandsbehaftete Server bauen:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express&quot;</span>)<span class="op">;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> session <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express-session&quot;</span>)<span class="op">;</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">session</span>({</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">secret</span><span class="op">:</span> <span class="st">&quot;mykey&quot;</span><span class="op">,</span> <span class="co">// Für Encoding und Decoding des Cookies</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">resave</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="co">// Nur speichern nach Änderung</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">saveUninitialized</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="co">// Anfangs immer speichern</span></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">cookie</span><span class="op">:</span> { <span class="dt">maxAge</span><span class="op">:</span> <span class="dv">5000</span> }<span class="op">,</span> <span class="co">// Ablaufzeit in Millisekunden</span></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/&quot;</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (req<span class="op">.</span><span class="at">session</span><span class="op">.</span><span class="at">count</span>) {</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Eine Session kann beliebige Attribute bekommen</span></span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>    req<span class="op">.</span><span class="at">session</span><span class="op">.</span><span class="at">count</span><span class="op">++;</span></span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">setHeader</span>(<span class="st">&quot;Content-Type&quot;</span><span class="op">,</span> <span class="st">&quot;text/html&quot;</span>)<span class="op">;</span></span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">write</span>(<span class="st">&quot;&lt;p&gt;count: &quot;</span> <span class="op">+</span> req<span class="op">.</span><span class="at">session</span><span class="op">.</span><span class="at">count</span> <span class="op">+</span> <span class="st">&quot;&lt;/p&gt;&quot;</span>)<span class="op">;</span></span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">end</span>()<span class="op">;</span></span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>    req<span class="op">.</span><span class="at">session</span><span class="op">.</span><span class="at">count</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">end</span>(<span class="st">&quot;Willkommen zu der Sitzung. Refresh!&quot;</span>)<span class="op">;</span></span>
+<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+</section>
+</section>
+</body>
+</html>
