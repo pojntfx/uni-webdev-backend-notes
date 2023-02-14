@@ -1,3 +1,9 @@
+commit 541de2ee857de90900ce5a23479a0838cff126f2
+Author: Felicitas Pojtinger <felicitas@pojtinger.com>
+Date:   Tue Feb 14 20:16:22 2023 +0100
+
+    docs: Describe remaining regex
+
 commit 4b980d8fb2d8f7cb224c58dd4140d8c32fcf56c9
 Author: Felicitas Pojtinger <felicitas@pojtinger.com>
 Date:   Sun Jan 29 05:19:48 2023 +0100
