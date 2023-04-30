@@ -1,34 +1,34 @@
-commit 541de2ee857de90900ce5a23479a0838cff126f2
+commit 3b4d0675c7832c54b2bfe53cb7c0225fc3ef9027
 Author: Felicitas Pojtinger <felicitas@pojtinger.com>
 Date:   Tue Feb 14 20:16:22 2023 +0100
 
     docs: Describe remaining regex
 
-commit 4b980d8fb2d8f7cb224c58dd4140d8c32fcf56c9
+commit 9da11390a6d56262f4fab916ef669166a8f67e62
 Author: Felicitas Pojtinger <felicitas@pojtinger.com>
 Date:   Sun Jan 29 05:19:48 2023 +0100
 
     feat: Add section on databases with MongoDB and Mongoose
 
-commit ac37145cfa2d28ef9b6e7cc789a199aea121d79b
+commit b2a529567a70e7bffa6c8d9c3aaf9f285f88a952
 Author: Felicitas Pojtinger <felicitas@pojtinger.com>
 Date:   Sat Jan 28 21:14:19 2023 +0100
 
     feat: Add section on sessions & cookies with Express.js
 
-commit 5fd4718abd83a9f8eaf2e3e0e53a7653ec47c73a
+commit e26f45fdc031e3ea7e4f587894b9c4b928bc201a
 Author: Felicitas Pojtinger <felicitas@pojtinger.com>
 Date:   Sat Jan 28 20:33:27 2023 +0100
 
     refactor: Add section on REST with Express.js
 
-commit 56d29140c64f3fcd96e991da19648853a7edcb4c
+commit fa355a1cdd338f27edf71eb52e2579a493cae22f
 Author: Felicitas Pojtinger <felicitas@pojtinger.com>
 Date:   Sat Jan 28 03:08:07 2023 +0100
 
     feat: Add topics and first slide deck's content
 
-commit 8ad2d34625ace6966724a6ba2546ad3aca68c6c7
+commit 2a325657ac0a2e4af9804ac17f0dda02bed5d67b
 Author: Felicitas Pojtinger <felicitas@pojtinger.com>
 Date:   Sat Jan 28 02:07:52 2023 +0100
 
