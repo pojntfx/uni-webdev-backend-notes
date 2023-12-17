@@ -9,216 +9,226 @@
   <meta name="keywords" content="webdev-backend, hdm-stuttgart" />
   <title>Uni Webdev Backend Summary</title>
   <style>
-    html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 1em;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
-      font-size: 85%;
-      margin: 0;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { color: #008000; } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { color: #008000; font-weight: bold; } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <header id="title-block-header">
@@ -230,95 +240,88 @@ Stuttgart</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#meta"><span class="toc-section-number">1.1</span> Meta</a>
+<li><a href="#meta" id="toc-meta"><span class="toc-section-number">1.1</span> Meta</a>
 <ul>
-<li><a href="#contributing"><span class="toc-section-number">1.1.1</span> Contributing</a></li>
-<li><a href="#license"><span class="toc-section-number">1.1.2</span>
-License</a></li>
+<li><a href="#contributing" id="toc-contributing"><span class="toc-section-number">1.1.1</span> Contributing</a></li>
+<li><a href="#license" id="toc-license"><span class="toc-section-number">1.1.2</span> License</a></li>
 </ul></li>
-<li><a href="#themen-der-vorlesung"><span class="toc-section-number">1.2</span> Themen der Vorlesung</a></li>
-<li><a href="#einführung-in-node.js"><span class="toc-section-number">1.3</span> Einführung in Node.js</a>
+<li><a href="#themen-der-vorlesung" id="toc-themen-der-vorlesung"><span class="toc-section-number">1.2</span> Themen der Vorlesung</a></li>
+<li><a href="#einführung-in-node.js" id="toc-einführung-in-node.js"><span class="toc-section-number">1.3</span> Einführung in Node.js</a>
 <ul>
-<li><a href="#warum-node.js"><span class="toc-section-number">1.3.1</span> Warum Node.js</a></li>
-<li><a href="#module"><span class="toc-section-number">1.3.2</span>
-Module</a></li>
-<li><a href="#import-export-mit-requiremodule"><span class="toc-section-number">1.3.3</span> Import &amp; Export mit
+<li><a href="#warum-node.js" id="toc-warum-node.js"><span class="toc-section-number">1.3.1</span> Warum Node.js</a></li>
+<li><a href="#module" id="toc-module"><span class="toc-section-number">1.3.2</span> Module</a></li>
+<li><a href="#import-export-mit-requiremodule" id="toc-import-export-mit-requiremodule"><span class="toc-section-number">1.3.3</span> Import &amp; Export mit
 <code>require</code>/<code>module</code></a></li>
-<li><a href="#import-export-mit-es6"><span class="toc-section-number">1.3.4</span> Import &amp; Export mit
+<li><a href="#import-export-mit-es6" id="toc-import-export-mit-es6"><span class="toc-section-number">1.3.4</span> Import &amp; Export mit
 ES6</a></li>
-<li><a href="#callbacks-vs.-promises-vs.-asyncawait"><span class="toc-section-number">1.3.5</span> Callbacks vs. Promises
+<li><a href="#callbacks-vs.-promises-vs.-asyncawait" id="toc-callbacks-vs.-promises-vs.-asyncawait"><span class="toc-section-number">1.3.5</span> Callbacks vs. Promises
 vs. Async/Await</a></li>
-<li><a href="#statischer-webserver"><span class="toc-section-number">1.3.6</span> Statischer Webserver</a></li>
-<li><a href="#npm-pakete-installieren"><span class="toc-section-number">1.3.7</span> NPM: Pakete
+<li><a href="#statischer-webserver" id="toc-statischer-webserver"><span class="toc-section-number">1.3.6</span> Statischer Webserver</a></li>
+<li><a href="#npm-pakete-installieren" id="toc-npm-pakete-installieren"><span class="toc-section-number">1.3.7</span> NPM: Pakete
 Installieren</a></li>
-<li><a href="#npm-package.json"><span class="toc-section-number">1.3.8</span> NPM:
+<li><a href="#npm-package.json" id="toc-npm-package.json"><span class="toc-section-number">1.3.8</span> NPM:
 <code>package.json</code></a></li>
-<li><a href="#npm-paketauflösung"><span class="toc-section-number">1.3.9</span> NPM: Paketauflösung</a></li>
+<li><a href="#npm-paketauflösung" id="toc-npm-paketauflösung"><span class="toc-section-number">1.3.9</span> NPM: Paketauflösung</a></li>
 </ul></li>
-<li><a href="#restful-endpoints-mit-express.js"><span class="toc-section-number">1.4</span> RESTful Endpoints mit
+<li><a href="#restful-endpoints-mit-express.js" id="toc-restful-endpoints-mit-express.js"><span class="toc-section-number">1.4</span> RESTful Endpoints mit
 Express.js</a>
 <ul>
-<li><a href="#warum-rest"><span class="toc-section-number">1.4.1</span>
-Warum REST?</a></li>
-<li><a href="#was-ist-rest"><span class="toc-section-number">1.4.2</span> Was ist REST?</a></li>
-<li><a href="#merkmale-einer-rest-architektur"><span class="toc-section-number">1.4.3</span> Merkmale einer
+<li><a href="#warum-rest" id="toc-warum-rest"><span class="toc-section-number">1.4.1</span> Warum REST?</a></li>
+<li><a href="#was-ist-rest" id="toc-was-ist-rest"><span class="toc-section-number">1.4.2</span> Was ist REST?</a></li>
+<li><a href="#merkmale-einer-rest-architektur" id="toc-merkmale-einer-rest-architektur"><span class="toc-section-number">1.4.3</span> Merkmale einer
 REST-Architektur</a></li>
-<li><a href="#idempotente-schnittstellen"><span class="toc-section-number">1.4.4</span> Idempotente
+<li><a href="#idempotente-schnittstellen" id="toc-idempotente-schnittstellen"><span class="toc-section-number">1.4.4</span> Idempotente
 Schnittstellen</a></li>
-<li><a href="#einheitliche-schnittstellen"><span class="toc-section-number">1.4.5</span> Einheitliche
+<li><a href="#einheitliche-schnittstellen" id="toc-einheitliche-schnittstellen"><span class="toc-section-number">1.4.5</span> Einheitliche
 Schnittstellen</a></li>
-<li><a href="#einheitliche-schnittstellen-mit-rest"><span class="toc-section-number">1.4.6</span> Einheitliche Schnittstellen mit
+<li><a href="#einheitliche-schnittstellen-mit-rest" id="toc-einheitliche-schnittstellen-mit-rest"><span class="toc-section-number">1.4.6</span> Einheitliche Schnittstellen mit
 REST</a></li>
-<li><a href="#routenpfade-in-express"><span class="toc-section-number">1.4.7</span> Routenpfade in Express</a></li>
-<li><a href="#middleware-in-express"><span class="toc-section-number">1.4.8</span> Middleware in Express</a></li>
-<li><a href="#mehrere-callback-handler"><span class="toc-section-number">1.4.9</span> Mehrere
+<li><a href="#routenpfade-in-express" id="toc-routenpfade-in-express"><span class="toc-section-number">1.4.7</span> Routenpfade in Express</a></li>
+<li><a href="#middleware-in-express" id="toc-middleware-in-express"><span class="toc-section-number">1.4.8</span> Middleware in Express</a></li>
+<li><a href="#mehrere-callback-handler" id="toc-mehrere-callback-handler"><span class="toc-section-number">1.4.9</span> Mehrere
 Callback-Handler</a></li>
-<li><a href="#chaining-routes"><span class="toc-section-number">1.4.10</span> Chaining Routes</a></li>
-<li><a href="#modularisierung"><span class="toc-section-number">1.4.11</span> Modularisierung</a></li>
-<li><a href="#weitere-methoden-von-express"><span class="toc-section-number">1.4.12</span> Weitere Methoden von
+<li><a href="#chaining-routes" id="toc-chaining-routes"><span class="toc-section-number">1.4.10</span> Chaining Routes</a></li>
+<li><a href="#modularisierung" id="toc-modularisierung"><span class="toc-section-number">1.4.11</span> Modularisierung</a></li>
+<li><a href="#weitere-methoden-von-express" id="toc-weitere-methoden-von-express"><span class="toc-section-number">1.4.12</span> Weitere Methoden von
 Express</a></li>
-<li><a href="#fehlerhandling"><span class="toc-section-number">1.4.13</span> Fehlerhandling</a></li>
-<li><a href="#http-verben-und-html-forms"><span class="toc-section-number">1.4.14</span> HTTP-Verben und
+<li><a href="#fehlerhandling" id="toc-fehlerhandling"><span class="toc-section-number">1.4.13</span> Fehlerhandling</a></li>
+<li><a href="#http-verben-und-html-forms" id="toc-http-verben-und-html-forms"><span class="toc-section-number">1.4.14</span> HTTP-Verben und
 HTML-Forms</a></li>
 </ul></li>
-<li><a href="#die-template-engine-ejs-und-express-sessions"><span class="toc-section-number">1.5</span> Die Template-Engine EJS und
+<li><a href="#die-template-engine-ejs-und-express-sessions" id="toc-die-template-engine-ejs-und-express-sessions"><span class="toc-section-number">1.5</span> Die Template-Engine EJS und
 Express-Sessions</a>
 <ul>
-<li><a href="#einführung-in-ejs"><span class="toc-section-number">1.5.1</span> Einführung in EJS</a></li>
-<li><a href="#verwendung-von-ejs"><span class="toc-section-number">1.5.2</span> Verwendung von EJS</a></li>
-<li><a href="#schleifen-in-ejs"><span class="toc-section-number">1.5.3</span> Schleifen in EJS</a></li>
-<li><a href="#state-mit-cookies-durch-cookie-parser"><span class="toc-section-number">1.5.4</span> State mit Cookies durch
+<li><a href="#einführung-in-ejs" id="toc-einführung-in-ejs"><span class="toc-section-number">1.5.1</span> Einführung in EJS</a></li>
+<li><a href="#verwendung-von-ejs" id="toc-verwendung-von-ejs"><span class="toc-section-number">1.5.2</span> Verwendung von EJS</a></li>
+<li><a href="#schleifen-in-ejs" id="toc-schleifen-in-ejs"><span class="toc-section-number">1.5.3</span> Schleifen in EJS</a></li>
+<li><a href="#state-mit-cookies-durch-cookie-parser" id="toc-state-mit-cookies-durch-cookie-parser"><span class="toc-section-number">1.5.4</span> State mit Cookies durch
 <code>cookie-parser</code></a></li>
-<li><a href="#state-mit-cookies-durch-express-session"><span class="toc-section-number">1.5.5</span> State mit Cookies durch
+<li><a href="#state-mit-cookies-durch-express-session" id="toc-state-mit-cookies-durch-express-session"><span class="toc-section-number">1.5.5</span> State mit Cookies durch
 <code>express-session</code></a></li>
 </ul></li>
-<li><a href="#datenbanken-mit-mongodb-und-mongoose"><span class="toc-section-number">1.6</span> Datenbanken mit MongoDB und
+<li><a href="#datenbanken-mit-mongodb-und-mongoose" id="toc-datenbanken-mit-mongodb-und-mongoose"><span class="toc-section-number">1.6</span> Datenbanken mit MongoDB und
 Mongoose</a>
 <ul>
-<li><a href="#datenbanken-in-webanwendungen"><span class="toc-section-number">1.6.1</span> Datenbanken in
+<li><a href="#datenbanken-in-webanwendungen" id="toc-datenbanken-in-webanwendungen"><span class="toc-section-number">1.6.1</span> Datenbanken in
 Webanwendungen</a></li>
-<li><a href="#grundlagen-zu-mongodb"><span class="toc-section-number">1.6.2</span> Grundlagen zu MongoDB</a></li>
-<li><a href="#verwendung-von-mongodb-in-express"><span class="toc-section-number">1.6.3</span> Verwendung von MongoDB in
+<li><a href="#grundlagen-zu-mongodb" id="toc-grundlagen-zu-mongodb"><span class="toc-section-number">1.6.2</span> Grundlagen zu MongoDB</a></li>
+<li><a href="#verwendung-von-mongodb-in-express" id="toc-verwendung-von-mongodb-in-express"><span class="toc-section-number">1.6.3</span> Verwendung von MongoDB in
 Express</a></li>
-<li><a href="#queries-in-mongodb"><span class="toc-section-number">1.6.4</span> Queries in MongoDB</a></li>
-<li><a href="#projektionen-in-mongodb"><span class="toc-section-number">1.6.5</span> Projektionen in MongoDB</a></li>
-<li><a href="#indizes-in-mongodb"><span class="toc-section-number">1.6.6</span> Indizes in MongoDB</a></li>
-<li><a href="#bewertung-von-mongodb"><span class="toc-section-number">1.6.7</span> Bewertung von MongoDB</a></li>
-<li><a href="#grundlagen-zu-mongoose"><span class="toc-section-number">1.6.8</span> Grundlagen zu Mongoose</a></li>
-<li><a href="#datenbankverbindung-in-mongoose-herstellen"><span class="toc-section-number">1.6.9</span> Datenbankverbindung in Mongoose
+<li><a href="#queries-in-mongodb" id="toc-queries-in-mongodb"><span class="toc-section-number">1.6.4</span> Queries in MongoDB</a></li>
+<li><a href="#projektionen-in-mongodb" id="toc-projektionen-in-mongodb"><span class="toc-section-number">1.6.5</span> Projektionen in MongoDB</a></li>
+<li><a href="#indizes-in-mongodb" id="toc-indizes-in-mongodb"><span class="toc-section-number">1.6.6</span> Indizes in MongoDB</a></li>
+<li><a href="#bewertung-von-mongodb" id="toc-bewertung-von-mongodb"><span class="toc-section-number">1.6.7</span> Bewertung von MongoDB</a></li>
+<li><a href="#grundlagen-zu-mongoose" id="toc-grundlagen-zu-mongoose"><span class="toc-section-number">1.6.8</span> Grundlagen zu Mongoose</a></li>
+<li><a href="#datenbankverbindung-in-mongoose-herstellen" id="toc-datenbankverbindung-in-mongoose-herstellen"><span class="toc-section-number">1.6.9</span> Datenbankverbindung in Mongoose
 herstellen</a></li>
-<li><a href="#schematas-in-mongoose"><span class="toc-section-number">1.6.10</span> Schematas in Mongoose</a></li>
-<li><a href="#queries-in-mongoose"><span class="toc-section-number">1.6.11</span> Queries in Mongoose</a></li>
-<li><a href="#validation-in-mongoose"><span class="toc-section-number">1.6.12</span> Validation in Mongoose</a></li>
+<li><a href="#schematas-in-mongoose" id="toc-schematas-in-mongoose"><span class="toc-section-number">1.6.10</span> Schematas in Mongoose</a></li>
+<li><a href="#queries-in-mongoose" id="toc-queries-in-mongoose"><span class="toc-section-number">1.6.11</span> Queries in Mongoose</a></li>
+<li><a href="#validation-in-mongoose" id="toc-validation-in-mongoose"><span class="toc-section-number">1.6.12</span> Validation in Mongoose</a></li>
 </ul></li>
 </ul>
 </nav>
-<section id="meta" data-number="0.1">
-<h2 data-number="1.1"><span class="header-section-number">1.1</span>
-Meta</h2>
-<section id="contributing" data-number="0.1.1">
-<h3 data-number="1.1.1"><span class="header-section-number">1.1.1</span>
-Contributing</h3>
+<h2 data-number="1.1" id="meta"><span class="header-section-number">1.1</span> Meta</h2>
+<h3 data-number="1.1.1" id="contributing"><span class="header-section-number">1.1.1</span> Contributing</h3>
 <p>These study materials are heavily based on <a href="https://www.hdm-stuttgart.de/bibliothek/studieninteressierte/bachelor/block?sgname=Mobile+Medien+%28Bachelor%2C+7+Semester%29&amp;sgblockID=2573378&amp;sgang=550041&amp;blockname=Web+Development+Backend">professor
 Toenniessen’s “Web Development Backend” lecture at HdM Stuttgart</a> and
 prior work of fellow students.</p>
@@ -330,10 +333,7 @@ issue on GitHub (<a href="https://github.com/pojntfx/uni-webdev-backend-notes">g
 </figure>
 <p>If you like the study materials, a GitHub star is always appreciated
 :)</p>
-</section>
-<section id="license" data-number="0.1.2">
-<h3 data-number="1.1.2"><span class="header-section-number">1.1.2</span>
-License</h3>
+<h3 data-number="1.1.2" id="license"><span class="header-section-number">1.1.2</span> License</h3>
 <figure>
 <img src="data:image/png;base64,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" width="128" alt="AGPL-3.0 license badge" />
 <figcaption aria-hidden="true">AGPL-3.0 license badge</figcaption>
@@ -341,11 +341,7 @@ License</h3>
 <p>Uni Webdev Backend Notes (c) 2023 Felicitas Pojtinger and
 contributors</p>
 <p>SPDX-License-Identifier: AGPL-3.0 </p>
-</section>
-</section>
-<section id="themen-der-vorlesung" data-number="0.2">
-<h2 data-number="1.2"><span class="header-section-number">1.2</span>
-Themen der Vorlesung</h2>
+<h2 data-number="1.2" id="themen-der-vorlesung"><span class="header-section-number">1.2</span> Themen der Vorlesung</h2>
 <ol type="1">
 <li><strong>Einführung in Node.js</strong> und einfache
 HTML-Fileserver</li>
@@ -354,13 +350,8 @@ HTML-Fileserver</li>
 <strong>Express-Sessions</strong></li>
 <li>Datenbanken mit <strong>MongoDB und Mongoose</strong></li>
 </ol>
-</section>
-<section id="einführung-in-node.js" data-number="0.3">
-<h2 data-number="1.3"><span class="header-section-number">1.3</span>
-Einführung in Node.js</h2>
-<section id="warum-node.js" data-number="0.3.1">
-<h3 data-number="1.3.1"><span class="header-section-number">1.3.1</span>
-Warum Node.js</h3>
+<h2 data-number="1.3" id="einführung-in-node.js"><span class="header-section-number">1.3</span> Einführung in Node.js</h2>
+<h3 data-number="1.3.1" id="warum-node.js"><span class="header-section-number">1.3.1</span> Warum Node.js</h3>
 <ul>
 <li>Node.js kann <strong>auf dem Server</strong> verwendet werden, im
 Gegensatz zum Browser</li>
@@ -390,10 +381,7 @@ Node.js irgendwo.</li>
 <li><strong>Multithreading</strong> in Node.js nur über Worker-Threads
 möglich</li>
 </ul>
-</section>
-<section id="module" data-number="0.3.2">
-<h3 data-number="1.3.2"><span class="header-section-number">1.3.2</span>
-Module</h3>
+<h3 data-number="1.3.2" id="module"><span class="header-section-number">1.3.2</span> Module</h3>
 <p>Node.js hat ein Modul-Konzept, das es ermöglicht, Funktionen und
 Variablen <strong>in eigene Dateien auszulagern</strong> und sie in
 anderen Dateien zu importieren.</p>
@@ -423,10 +411,8 @@ Codes</strong> hat.</li>
 Arbeit unter Teammitgliedern aufzuteilen, was wiederum zu
 <strong>weniger Merge-Konflikten</strong> führt.</li>
 </ul>
-</section>
-<section id="import-export-mit-requiremodule" data-number="0.3.3">
-<h3 data-number="1.3.3"><span class="header-section-number">1.3.3</span>
-Import &amp; Export mit <code>require</code>/<code>module</code></h3>
+<h3 data-number="1.3.3" id="import-export-mit-requiremodule"><span class="header-section-number">1.3.3</span> Import &amp; Export mit
+<code>require</code>/<code>module</code></h3>
 <p><strong>Export-Varianten</strong>:</p>
 <ol type="a">
 <li>Einzelne Methode oder Variable:</li>
@@ -467,10 +453,8 @@ vorherigen Exporte überschrieben.</strong></p>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { readFile<span class="op">,</span> <span class="op">...</span>fs } <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">;</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">readFile</span>()<span class="op">;</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>fs<span class="op">.</span><span class="fu">writeFile</span>()<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="import-export-mit-es6" data-number="0.3.4">
-<h3 data-number="1.3.4"><span class="header-section-number">1.3.4</span>
-Import &amp; Export mit ES6</h3>
+<h3 data-number="1.3.4" id="import-export-mit-es6"><span class="header-section-number">1.3.4</span> Import &amp; Export mit
+ES6</h3>
 <p><strong>Export</strong>:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">function</span> <span class="fu">add</span>(x<span class="op">,</span> y) {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">+</span> y<span class="op">;</span></span>
@@ -493,10 +477,8 @@ Import &amp; Export mit ES6</h3>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">addition</span>(<span class="dv">5</span><span class="op">,</span> <span class="dv">2</span>))<span class="op">;</span> <span class="co">// Ausgabe: 7</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">subtract</span>(<span class="dv">5</span><span class="op">,</span> <span class="dv">2</span>))<span class="op">;</span> <span class="co">// Ausgabe: 3</span></span></code></pre></div>
-</section>
-<section id="callbacks-vs.-promises-vs.-asyncawait" data-number="0.3.5">
-<h3 data-number="1.3.5"><span class="header-section-number">1.3.5</span>
-Callbacks vs. Promises vs. Async/Await</h3>
+<h3 data-number="1.3.5" id="callbacks-vs.-promises-vs.-asyncawait"><span class="header-section-number">1.3.5</span> Callbacks vs. Promises
+vs. Async/Await</h3>
 <p><strong>Callbacks:</strong></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -523,10 +505,7 @@ Callbacks vs. Promises vs. Async/Await</h3>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">readFileExample</span>()<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="statischer-webserver" data-number="0.3.6">
-<h3 data-number="1.3.6"><span class="header-section-number">1.3.6</span>
-Statischer Webserver</h3>
+<h3 data-number="1.3.6" id="statischer-webserver"><span class="header-section-number">1.3.6</span> Statischer Webserver</h3>
 <p>Mit Support für ein paar wenige MIME-Types:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> http <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;http&quot;</span>)<span class="op">;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;fs&quot;</span>)<span class="op">;</span></span>
@@ -572,10 +551,7 @@ Statischer Webserver</h3>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">listen</span>(<span class="dv">3000</span>)<span class="op">;</span></span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Listening on :3000&quot;</span>)<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="npm-pakete-installieren" data-number="0.3.7">
-<h3 data-number="1.3.7"><span class="header-section-number">1.3.7</span>
-NPM: Pakete Installieren</h3>
+<h3 data-number="1.3.7" id="npm-pakete-installieren"><span class="header-section-number">1.3.7</span> NPM: Pakete Installieren</h3>
 <ul>
 <li>npm ist ein <strong>Paketmanager</strong> für Node.js (wie Maven bei
 Java oder pip bei Python)</li>
@@ -600,10 +576,8 @@ aller installierten Pakete.</strong></li>
 <li>Die <code>package-lock.json</code> sollte hingegen <strong>immer
 committed</strong> werden.</li>
 </ul>
-</section>
-<section id="npm-package.json" data-number="0.3.8">
-<h3 data-number="1.3.8"><span class="header-section-number">1.3.8</span>
-NPM: <code>package.json</code></h3>
+<h3 data-number="1.3.8" id="npm-package.json"><span class="header-section-number">1.3.8</span> NPM:
+<code>package.json</code></h3>
 <ul>
 <li>Kann mit <code>npm init</code> erstellt werden</li>
 <li>Unter <code>scripts</code> in der <code>package.json</code> Datei
@@ -611,10 +585,7 @@ können Command-Line Befehle gespeichert werden, die später ausgeführt
 werden können, indem man sie in der Kommandozeile aufruft, z.B.
 <code>npm run start</code> oder <code>npm run test</code>.</li>
 </ul>
-</section>
-<section id="npm-paketauflösung" data-number="0.3.9">
-<h3 data-number="1.3.9"><span class="header-section-number">1.3.9</span>
-NPM: Paketauflösung</h3>
+<h3 data-number="1.3.9" id="npm-paketauflösung"><span class="header-section-number">1.3.9</span> NPM: Paketauflösung</h3>
 <ol type="1">
 <li>In einem <strong>relativen Pfad</strong> zur Datei, bis eine
 “package.json” Datei gefunden wird (npm Projekt Definition) und dort im
@@ -625,14 +596,9 @@ NPM: Paketauflösung</h3>
 installiert werden, damit dort alle Abhängigkeiten definiert sind.
 CLI-Tools können auch global, z.B. zur Projektinitialisierung,
 installiert werden.</p>
-</section>
-</section>
-<section id="restful-endpoints-mit-express.js" data-number="0.4">
-<h2 data-number="1.4"><span class="header-section-number">1.4</span>
-RESTful Endpoints mit Express.js</h2>
-<section id="warum-rest" data-number="0.4.1">
-<h3 data-number="1.4.1"><span class="header-section-number">1.4.1</span>
-Warum REST?</h3>
+<h2 data-number="1.4" id="restful-endpoints-mit-express.js"><span class="header-section-number">1.4</span> RESTful Endpoints mit
+Express.js</h2>
+<h3 data-number="1.4.1" id="warum-rest"><span class="header-section-number">1.4.1</span> Warum REST?</h3>
 <p><strong>Jahr 2000</strong>: Überlastung der Web-Backends (Server)</p>
 <ul>
 <li><strong>Client</strong>: Wenig JavaScript</li>
@@ -656,10 +622,7 @@ Server</li>
 <li><strong>Keine Zustandsverwaltung</strong> einzelner User mehr</li>
 </ul></li>
 </ul>
-</section>
-<section id="was-ist-rest" data-number="0.4.2">
-<h3 data-number="1.4.2"><span class="header-section-number">1.4.2</span>
-Was ist REST?</h3>
+<h3 data-number="1.4.2" id="was-ist-rest"><span class="header-section-number">1.4.2</span> Was ist REST?</h3>
 <ul>
 <li>REST steht für <strong>“Representational State Transfer”</strong>
 <ul>
@@ -686,10 +649,8 @@ Legacy-Systeme zu encapsulieren.</li>
 <li>REST hat <strong>ursprünglich keine Beziehung zu HTTP</strong> oder
 speziell gestalteten URLs.</li>
 </ul>
-</section>
-<section id="merkmale-einer-rest-architektur" data-number="0.4.3">
-<h3 data-number="1.4.3"><span class="header-section-number">1.4.3</span>
-Merkmale einer REST-Architektur</h3>
+<h3 data-number="1.4.3" id="merkmale-einer-rest-architektur"><span class="header-section-number">1.4.3</span> Merkmale einer
+REST-Architektur</h3>
 <ul>
 <li>Client-Server-Modell. Zustandslos: Jeder Request enthält alle
 Informationen zur Ausführung</li>
@@ -715,10 +676,8 @@ Aktualisierung und Löschung von Ressourcen:
 <li>Jede Ressource hat eine <strong>eindeutige URI/URL</strong></li>
 <li>Jede Ressource trägt <strong>Caching-Informationen</strong></li>
 </ul>
-</section>
-<section id="idempotente-schnittstellen" data-number="0.4.4">
-<h3 data-number="1.4.4"><span class="header-section-number">1.4.4</span>
-Idempotente Schnittstellen</h3>
+<h3 data-number="1.4.4" id="idempotente-schnittstellen"><span class="header-section-number">1.4.4</span> Idempotente
+Schnittstellen</h3>
 <p>Sichere und idempotente Schnittstellen:</p>
 <ul>
 <li><strong>GET</strong>: Read auf eine Ressource</li>
@@ -733,10 +692,8 @@ werden? (Meta-information über mögliche HTTP-Verben.)</li>
 <p>Unsichere und nicht-idempotente Schnittstelle: <strong>POST</strong>
 (Create auf eine Ressource). Im Gegensatz zu DELETE können hier nach
 einem erneuten Anruf ohne Checks weitere Objekte erstellt werden.</p>
-</section>
-<section id="einheitliche-schnittstellen" data-number="0.4.5">
-<h3 data-number="1.4.5"><span class="header-section-number">1.4.5</span>
-Einheitliche Schnittstellen</h3>
+<h3 data-number="1.4.5" id="einheitliche-schnittstellen"><span class="header-section-number">1.4.5</span> Einheitliche
+Schnittstellen</h3>
 <ul>
 <li>Der <strong>Pfad</strong> einer URL kann statisch sein, z.B. /users,
 oder Plural.</li>
@@ -750,10 +707,8 @@ das sortieren von Ressourcen nach bestimmten Kriterien.</li>
 JSON-Daten bei Anfragen wie PUT, POST, PATCH oder DELETE zu
 übertragen.</li>
 </ul>
-</section>
-<section id="einheitliche-schnittstellen-mit-rest" data-number="0.4.6">
-<h3 data-number="1.4.6"><span class="header-section-number">1.4.6</span>
-Einheitliche Schnittstellen mit REST</h3>
+<h3 data-number="1.4.6" id="einheitliche-schnittstellen-mit-rest"><span class="header-section-number">1.4.6</span> Einheitliche Schnittstellen
+mit REST</h3>
 <p><strong>Pfad</strong>:</p>
 <pre class="plaintext"><code>http://127.0.0.1:3000/fruits</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> DATA <span class="op">=</span> [</span>
@@ -835,10 +790,7 @@ Einheitliche Schnittstellen mit REST</h3>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">send</span>(fruit)<span class="op">;</span></span>
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="routenpfade-in-express" data-number="0.4.7">
-<h3 data-number="1.4.7"><span class="header-section-number">1.4.7</span>
-Routenpfade in Express</h3>
+<h3 data-number="1.4.7" id="routenpfade-in-express"><span class="header-section-number">1.4.7</span> Routenpfade in Express</h3>
 <div class="sourceCode" id="cb28"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/ab?cd&quot;</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;ab?cd&quot;</span>)<span class="op">;</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span> <span class="co">// acdabcd</span></span>
@@ -862,10 +814,7 @@ Routenpfade in Express</h3>
 <span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="ss">/.</span><span class="sc">*</span><span class="ss">fly</span><span class="sc">$</span><span class="ss">/</span><span class="op">,</span> <span class="kw">function</span> (req<span class="op">,</span> res) {</span>
 <span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;/.*fly$/&quot;</span>)<span class="op">;</span></span>
 <span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="middleware-in-express" data-number="0.4.8">
-<h3 data-number="1.4.8"><span class="header-section-number">1.4.8</span>
-Middleware in Express</h3>
+<h3 data-number="1.4.8" id="middleware-in-express"><span class="header-section-number">1.4.8</span> Middleware in Express</h3>
 <p><strong>Wildcard-Route</strong>:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">all</span>(<span class="ss">/.</span><span class="sc">*</span><span class="ss">/</span><span class="op">,</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`wildcard-route: </span><span class="sc">${</span>req<span class="op">.</span><span class="at">method</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>req<span class="op">.</span><span class="at">url</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
@@ -878,10 +827,7 @@ Middleware in Express</h3>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
 <p>Die <code>next()</code>-Methode führt immer den nächsten passenden
 Routen-Handler aus.</p>
-</section>
-<section id="mehrere-callback-handler" data-number="0.4.9">
-<h3 data-number="1.4.9"><span class="header-section-number">1.4.9</span>
-Mehrere Callback-Handler</h3>
+<h3 data-number="1.4.9" id="mehrere-callback-handler"><span class="header-section-number">1.4.9</span> Mehrere Callback-Handler</h3>
 <div class="sourceCode" id="cb31"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> cb0 <span class="op">=</span> <span class="kw">function</span> (req<span class="op">,</span> res<span class="op">,</span> next) {</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;CB0&quot;</span>)<span class="op">;</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">next</span>()<span class="op">;</span></span>
@@ -898,9 +844,7 @@ Mehrere Callback-Handler</h3>
 <span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">&quot;/example/c&quot;</span><span class="op">,</span> [cb0<span class="op">,</span> cb1<span class="op">,</span> cb2])<span class="op">;</span></span></code></pre></div>
 <p>Wichtig: <code>next</code> nicht vergessen!</p>
-</section>
-<section id="chaining-routes" data-number="0.4.10">
-<h3 data-number="1.4.10"><span class="header-section-number">1.4.10</span> Chaining Routes</h3>
+<h3 data-number="1.4.10" id="chaining-routes"><span class="header-section-number">1.4.10</span> Chaining Routes</h3>
 <p>Mehrere HTTP-Verben für eine Route können mithilfe von Chaining
 Routes zusammengefasst werden.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>app</span>
@@ -922,9 +866,7 @@ Routes zusammengefasst werden.</p>
 <span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span></code></pre></div>
 <p><strong>Vorteile</strong>: weniger fehleranfällig, leichter zu
 pflegen (da man die Route nur einmal schreibt)</p>
-</section>
-<section id="modularisierung" data-number="0.4.11">
-<h3 data-number="1.4.11"><span class="header-section-number">1.4.11</span> Modularisierung</h3>
+<h3 data-number="1.4.11" id="modularisierung"><span class="header-section-number">1.4.11</span> Modularisierung</h3>
 <p>Modularisierung von Routen in Express kann mithilfe von
 <code>express.Router</code> erreicht werden.</p>
 <p>Erstellung einer Router-Datei <code>birds.js</code>:</p>
@@ -957,9 +899,7 @@ pflegen (da man die Route nur einmal schreibt)</p>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">listen</span>(<span class="dv">3000</span>)<span class="op">;</span></span>
 <span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Listening on :3000&quot;</span>)<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="weitere-methoden-von-express" data-number="0.4.12">
-<h3 data-number="1.4.12"><span class="header-section-number">1.4.12</span> Weitere Methoden von
+<h3 data-number="1.4.12" id="weitere-methoden-von-express"><span class="header-section-number">1.4.12</span> Weitere Methoden von
 Express</h3>
 <p><strong>Result</strong>:</p>
 <ul>
@@ -984,9 +924,7 @@ HTTP-Request-Headern zurück</li>
 zurück, die im Request enthalten sind (benötigt die Middleware
 <code>cookie-parser</code>)</li>
 </ul>
-</section>
-<section id="fehlerhandling" data-number="0.4.13">
-<h3 data-number="1.4.13"><span class="header-section-number">1.4.13</span> Fehlerhandling</h3>
+<h3 data-number="1.4.13" id="fehlerhandling"><span class="header-section-number">1.4.13</span> Fehlerhandling</h3>
 <p><strong>404 als JSON zurückgeben</strong>:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">&quot;/users&quot;</span><span class="op">,</span> <span class="pp">require</span>(<span class="st">&quot;./routes/users&quot;</span>))<span class="op">;</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">&quot;/products&quot;</span><span class="op">,</span> <span class="pp">require</span>(<span class="st">&quot;./routes/products&quot;</span>))<span class="op">;</span></span>
@@ -1036,9 +974,7 @@ einbauen.</li>
 <span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">json</span>({ <span class="dt">message</span><span class="op">:</span> <span class="st">&quot;InternalServerError&quot;</span> })<span class="op">;</span></span>
 <span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err)<span class="op">;</span></span>
 <span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="http-verben-und-html-forms" data-number="0.4.14">
-<h3 data-number="1.4.14"><span class="header-section-number">1.4.14</span> HTTP-Verben und
+<h3 data-number="1.4.14" id="http-verben-und-html-forms"><span class="header-section-number">1.4.14</span> HTTP-Verben und
 HTML-Forms</h3>
 <ul>
 <li>In Express kann man HTTP-Verben wie PATCH, PUT oder DELETE auf
@@ -1058,17 +994,12 @@ Formular angesprochen werden kann:</p>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
 <p>In dem Formular muss dann der URL-Parameter
 <code>_method=patch</code> hinzugefügt werden:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;/fruits?_method=patch&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;post&quot;</span><span class="kw">&gt;</span>...<span class="kw">&lt;/form&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;/fruits?_method=patch&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;post&quot;</span><span class="dt">&gt;</span>...<span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span></code></pre></div>
 <p>Jetzt wird die PATCH-Route aufgerufen, wenn das Formular abgeschickt
 wird.</p>
-</section>
-</section>
-<section id="die-template-engine-ejs-und-express-sessions" data-number="0.5">
-<h2 data-number="1.5"><span class="header-section-number">1.5</span> Die
-Template-Engine EJS und Express-Sessions</h2>
-<section id="einführung-in-ejs" data-number="0.5.1">
-<h3 data-number="1.5.1"><span class="header-section-number">1.5.1</span>
-Einführung in EJS</h3>
+<h2 data-number="1.5" id="die-template-engine-ejs-und-express-sessions"><span class="header-section-number">1.5</span> Die Template-Engine EJS und
+Express-Sessions</h2>
+<h3 data-number="1.5.1" id="einführung-in-ejs"><span class="header-section-number">1.5.1</span> Einführung in EJS</h3>
 <ul>
 <li>EJS ist eine Template-Engine für JavaScript</li>
 <li>Ermöglicht die Generierung von HTML-Seiten oder Snippets im
@@ -1077,10 +1008,7 @@ Web-Backend</li>
 Daten aus der Datenbank, und generiert damit fertiges HTML (ganze Seiten
 oder Snippets)</li>
 </ul>
-</section>
-<section id="verwendung-von-ejs" data-number="0.5.2">
-<h3 data-number="1.5.2"><span class="header-section-number">1.5.2</span>
-Verwendung von EJS</h3>
+<h3 data-number="1.5.2" id="verwendung-von-ejs"><span class="header-section-number">1.5.2</span> Verwendung von EJS</h3>
 <p>Der Code auf dem <strong>Server</strong>, der die EJS-Template-Engine
 verwendet, sieht wie folgt aus:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express&quot;</span>)<span class="op">;</span></span>
@@ -1099,29 +1027,26 @@ verwendet, sieht wie folgt aus:</p>
 <p>Das <strong>Template</strong> <code>template.ejs</code> im
 Unterverzeichnis <code>views</code>, welcher ein JavaScript-Objekt
 <code>{vorname, adresse, telefon}</code> übergeben wird:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;body&gt;</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1&gt;</span>User Information<span class="kw">&lt;/h1&gt;</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;table&gt;</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;tr&gt;</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span>Name:<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span><span class="er">&lt;</span>%= user.name %&gt;<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/tr&gt;</span></span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;tr&gt;</span></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span>Email:<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span><span class="er">&lt;</span>%= user.email %&gt;<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/tr&gt;</span></span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;tr&gt;</span></span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span>Phone:<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span><span class="er">&lt;</span>%= user.phone %&gt;<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/tr&gt;</span></span>
-<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/table&gt;</span></span>
-<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/body&gt;</span></span>
-<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
-</section>
-<section id="schleifen-in-ejs" data-number="0.5.3">
-<h3 data-number="1.5.3"><span class="header-section-number">1.5.3</span>
-Schleifen in EJS</h3>
+<div class="sourceCode" id="cb42"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>User Information<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Name:<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span><span class="er">&lt;</span>%= user.name %&gt;<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Email:<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span><span class="er">&lt;</span>%= user.email %&gt;<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Phone:<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span><span class="er">&lt;</span>%= user.phone %&gt;<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 data-number="1.5.3" id="schleifen-in-ejs"><span class="header-section-number">1.5.3</span> Schleifen in EJS</h3>
 <p><strong>Server</strong>:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express&quot;</span>)<span class="op">;</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
@@ -1147,26 +1072,24 @@ Schleifen in EJS</h3>
 <span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;EJS server running on localhost:3000&quot;</span>)<span class="op">;</span></span></code></pre></div>
 <p><strong>Template</strong>:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;body&gt;</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;table&gt;</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;tr&gt;</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;th&gt;</span>Name<span class="kw">&lt;/th&gt;</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;th&gt;</span>Farbe<span class="kw">&lt;/th&gt;</span></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/tr&gt;</span></span>
+<div class="sourceCode" id="cb44"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Name<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Farbe<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
 <span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>      <span class="er">&lt;</span>% fruits.forEach( o =&gt; { %&gt;</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;tr&gt;</span></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span><span class="er">&lt;</span>%= o.name %&gt;<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td&gt;</span><span class="er">&lt;</span>%= o.color %&gt;<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span><span class="er">&lt;</span>%= o.name %&gt;<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span><span class="er">&lt;</span>%= o.color %&gt;<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
 <span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>      <span class="er">&lt;</span>% }) %&gt;</span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/table&gt;</span></span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/body&gt;</span></span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
-</section>
-<section id="state-mit-cookies-durch-cookie-parser" data-number="0.5.4">
-<h3 data-number="1.5.4"><span class="header-section-number">1.5.4</span>
-State mit Cookies durch <code>cookie-parser</code></h3>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 data-number="1.5.4" id="state-mit-cookies-durch-cookie-parser"><span class="header-section-number">1.5.4</span> State mit Cookies durch
+<code>cookie-parser</code></h3>
 <ul>
 <li>npm-Package <code>cookie-parser</code> ermöglicht zustandsbehaftete
 Server</li>
@@ -1196,10 +1119,8 @@ e-Commerce-Website</li>
 <span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> userID <span class="op">=</span> cookies<span class="op">.</span><span class="at">userID</span><span class="op">;</span></span>
 <span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> verein <span class="op">=</span> cookies<span class="op">.</span><span class="at">verein</span><span class="op">;</span></span></code></pre></div>
-</section>
-<section id="state-mit-cookies-durch-express-session" data-number="0.5.5">
-<h3 data-number="1.5.5"><span class="header-section-number">1.5.5</span>
-State mit Cookies durch <code>express-session</code></h3>
+<h3 data-number="1.5.5" id="state-mit-cookies-durch-express-session"><span class="header-section-number">1.5.5</span> State mit Cookies durch
+<code>express-session</code></h3>
 <p>Mit dem npm-Package <code>express-session</code> kann man
 zustandsbehaftete Server bauen:</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;express&quot;</span>)<span class="op">;</span></span>
@@ -1228,14 +1149,10 @@ zustandsbehaftete Server bauen:</p>
 <span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">end</span>(<span class="st">&quot;Willkommen zu der Sitzung. Refresh!&quot;</span>)<span class="op">;</span></span>
 <span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
-</section>
-</section>
-<section id="datenbanken-mit-mongodb-und-mongoose" data-number="0.6">
-<h2 data-number="1.6"><span class="header-section-number">1.6</span>
-Datenbanken mit MongoDB und Mongoose</h2>
-<section id="datenbanken-in-webanwendungen" data-number="0.6.1">
-<h3 data-number="1.6.1"><span class="header-section-number">1.6.1</span>
-Datenbanken in Webanwendungen</h3>
+<h2 data-number="1.6" id="datenbanken-mit-mongodb-und-mongoose"><span class="header-section-number">1.6</span> Datenbanken mit MongoDB und
+Mongoose</h2>
+<h3 data-number="1.6.1" id="datenbanken-in-webanwendungen"><span class="header-section-number">1.6.1</span> Datenbanken in
+Webanwendungen</h3>
 <ul>
 <li><strong>Bisher</strong>: Daten volatil in globalem Array im Backend
 gespeichert</li>
@@ -1244,10 +1161,7 @@ gespeichert</li>
 <li><strong>Ziel</strong>: Effiziente Verwaltung von Daten, insbesondere
 bei großen Mengen.</li>
 </ul>
-</section>
-<section id="grundlagen-zu-mongodb" data-number="0.6.2">
-<h3 data-number="1.6.2"><span class="header-section-number">1.6.2</span>
-Grundlagen zu MongoDB</h3>
+<h3 data-number="1.6.2" id="grundlagen-zu-mongodb"><span class="header-section-number">1.6.2</span> Grundlagen zu MongoDB</h3>
 <ul>
 <li><strong>MongoDB</strong>: Backend-Datenbanksystem für JS objects
 (hierarchische Dokumente)</li>
@@ -1268,10 +1182,8 @@ Speichern <strong>auf Applikationsebene</strong> durchführen</li>
 Objekt-Beziehungen direkt gespeichert werden, anstatt über mehrere
 Tabellen mit Fremdschlüsseln.</li>
 </ul>
-</section>
-<section id="verwendung-von-mongodb-in-express" data-number="0.6.3">
-<h3 data-number="1.6.3"><span class="header-section-number">1.6.3</span>
-Verwendung von MongoDB in Express</h3>
+<h3 data-number="1.6.3" id="verwendung-von-mongodb-in-express"><span class="header-section-number">1.6.3</span> Verwendung von MongoDB in
+Express</h3>
 <p>Zuerst <strong><code>mongodb</code> installieren</strong>:
 <code>npm i -s mongodb</code></p>
 <p>Dann <strong>mit DB verbinden</strong>:</p>
@@ -1285,10 +1197,7 @@ Verwendung von MongoDB in Express</h3>
 <span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  db <span class="op">=</span> connection<span class="op">.</span><span class="fu">db</span>(<span class="st">&quot;food&quot;</span>)<span class="op">;</span></span>
 <span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;connected to database food ...&quot;</span>)<span class="op">;</span></span>
 <span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="queries-in-mongodb" data-number="0.6.4">
-<h3 data-number="1.6.4"><span class="header-section-number">1.6.4</span>
-Queries in MongoDB</h3>
+<h3 data-number="1.6.4" id="queries-in-mongodb"><span class="header-section-number">1.6.4</span> Queries in MongoDB</h3>
 <p><strong>Erstellen einer Collection</strong>:</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">post</span>(<span class="st">&quot;/example-create-collection-fruits&quot;</span><span class="op">,</span> <span class="kw">async</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> db<span class="op">.</span><span class="fu">createCollection</span>(<span class="st">&quot;fruits&quot;</span>)<span class="op">;</span></span>
@@ -1456,10 +1365,7 @@ Arrays.</li>
 <span id="cb64-16"><a href="#cb64-16" aria-hidden="true" tabindex="-1"></a>    }))</span>
 <span id="cb64-17"><a href="#cb64-17" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
 <span id="cb64-18"><a href="#cb64-18" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="projektionen-in-mongodb" data-number="0.6.5">
-<h3 data-number="1.6.5"><span class="header-section-number">1.6.5</span>
-Projektionen in MongoDB</h3>
+<h3 data-number="1.6.5" id="projektionen-in-mongodb"><span class="header-section-number">1.6.5</span> Projektionen in MongoDB</h3>
 <ul>
 <li><strong>Bisher: Formatierung der Abfrage-Ergebnisse in der
 Anwendung</strong> durch den Aufruf von <code>result.map</code>auf
@@ -1543,10 +1449,7 @@ Hauptspeicher.</li>
 <span id="cb68-20"><a href="#cb68-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb68-21"><a href="#cb68-21" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">send</span>(restaurants)<span class="op">;</span></span>
 <span id="cb68-22"><a href="#cb68-22" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="indizes-in-mongodb" data-number="0.6.6">
-<h3 data-number="1.6.6"><span class="header-section-number">1.6.6</span>
-Indizes in MongoDB</h3>
+<h3 data-number="1.6.6" id="indizes-in-mongodb"><span class="header-section-number">1.6.6</span> Indizes in MongoDB</h3>
 <p>Datenbank-Indizes <strong>beschleunigen die Zugriffe für Queries und
 Updates</strong>, wenn nicht konkret mit der <code>_id</code> gesucht
 wird.</p>
@@ -1568,10 +1471,7 @@ wird.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> db<span class="op">.</span><span class="fu">collection</span>(<span class="st">&quot;restaurants&quot;</span>)<span class="op">.</span><span class="fu">dropIndex</span>(<span class="st">&quot;cuisine_1&quot;</span>)<span class="op">;</span> <span class="co">// 0: not ok, 1: success</span></span></code></pre></div>
 <p><strong>Löschen aller Indizes</strong>:</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> db<span class="op">.</span><span class="fu">collection</span>(<span class="st">&quot;restaurants&quot;</span>)<span class="op">.</span><span class="fu">dropIndexes</span>()<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="bewertung-von-mongodb" data-number="0.6.7">
-<h3 data-number="1.6.7"><span class="header-section-number">1.6.7</span>
-Bewertung von MongoDB</h3>
+<h3 data-number="1.6.7" id="bewertung-von-mongodb"><span class="header-section-number">1.6.7</span> Bewertung von MongoDB</h3>
 <p><strong>Vorteile</strong>:</p>
 <ul>
 <li>Einfache Schnittstelle</li>
@@ -1586,10 +1486,7 @@ Bewertung von MongoDB</h3>
 <li>Keine semantische Datenmodellierung</li>
 <li>Validierung muss von Anwendung gemacht werden</li>
 </ul>
-</section>
-<section id="grundlagen-zu-mongoose" data-number="0.6.8">
-<h3 data-number="1.6.8"><span class="header-section-number">1.6.8</span>
-Grundlagen zu Mongoose</h3>
+<h3 data-number="1.6.8" id="grundlagen-zu-mongoose"><span class="header-section-number">1.6.8</span> Grundlagen zu Mongoose</h3>
 <ul>
 <li>Mongoose: Eine komfortable Bibliothek über npm-Package
 <code>mongodb</code> in Node.js</li>
@@ -1601,10 +1498,8 @@ mit Validierung</strong> der Daten</li>
 Query-Schnittstelle</li>
 <li>Sehr <strong>mächtig</strong></li>
 </ul>
-</section>
-<section id="datenbankverbindung-in-mongoose-herstellen" data-number="0.6.9">
-<h3 data-number="1.6.9"><span class="header-section-number">1.6.9</span>
-Datenbankverbindung in Mongoose herstellen</h3>
+<h3 data-number="1.6.9" id="datenbankverbindung-in-mongoose-herstellen"><span class="header-section-number">1.6.9</span> Datenbankverbindung in
+Mongoose herstellen</h3>
 <p>Ist sehr ähnlich zu MongoDB:</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> url <span class="op">=</span> <span class="st">&quot;mongodb://localhost:27017/food_mongoose&quot;</span><span class="op">;</span></span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1613,9 +1508,7 @@ Datenbankverbindung in Mongoose herstellen</h3>
 <span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
 <span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;connected to database food_mongoose ...&quot;</span>)<span class="op">;</span></span>
 <span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span></code></pre></div>
-</section>
-<section id="schematas-in-mongoose" data-number="0.6.10">
-<h3 data-number="1.6.10"><span class="header-section-number">1.6.10</span> Schematas in Mongoose</h3>
+<h3 data-number="1.6.10" id="schematas-in-mongoose"><span class="header-section-number">1.6.10</span> Schematas in Mongoose</h3>
 <p><strong>Definition von Schemata</strong>:</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mongoose <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;mongoose&quot;</span>)<span class="op">;</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1711,9 +1604,7 @@ Datenbankverbindung in Mongoose herstellen</h3>
 (wie SQL <code>JOIN</code>):
 <code>await Product.find().populate(&quot;category&quot;)</code></p>
 </blockquote>
-</section>
-<section id="queries-in-mongoose" data-number="0.6.11">
-<h3 data-number="1.6.11"><span class="header-section-number">1.6.11</span> Queries in Mongoose</h3>
+<h3 data-number="1.6.11" id="queries-in-mongoose"><span class="header-section-number">1.6.11</span> Queries in Mongoose</h3>
 <p><strong>Auslesen aller Dokumente</strong>:</p>
 <ul>
 <li>Queries liefern nicht nur einfache JS-Objekte, sondern
@@ -1774,9 +1665,7 @@ Mongoose-Queries</strong>:</p>
 <p>Ersetze <code>db.collection(&quot;fruits&quot;)</code> durch
 <code>Fruit</code></p>
 </blockquote>
-</section>
-<section id="validation-in-mongoose" data-number="0.6.12">
-<h3 data-number="1.6.12"><span class="header-section-number">1.6.12</span> Validation in Mongoose</h3>
+<h3 data-number="1.6.12" id="validation-in-mongoose"><span class="header-section-number">1.6.12</span> Validation in Mongoose</h3>
 <p><strong>Eingebaute Validatoren</strong>:</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> breakfastSchema <span class="op">=</span> <span class="kw">new</span> <span class="fu">Schema</span>({</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">eggs</span><span class="op">:</span> {</span>
@@ -1810,7 +1699,5 @@ Mongoose-Queries</strong>:</p>
 <span id="cb86-11"><a href="#cb86-11" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
 <span id="cb86-12"><a href="#cb86-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb86-13"><a href="#cb86-13" aria-hidden="true" tabindex="-1"></a><span class="kw">new</span> mongoose<span class="op">.</span><span class="fu">Schema</span>({ <span class="dt">name</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="bu">String</span><span class="op">,</span> <span class="dt">validate</span><span class="op">:</span> customValidator } })<span class="op">;</span></span></code></pre></div>
-</section>
-</section>
 </body>
 </html>
